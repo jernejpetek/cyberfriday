@@ -1,1 +1,1 @@
-Website accessible ![HERE](https://jernejpetek.github.io/cyberfriday/)
+Website accessible [HERE](https://jernejpetek.github.io/cyberfriday/)
