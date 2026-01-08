@@ -1,0 +1,27 @@
+[
+
+  {
+    "title": "Simple Python Port Scanner (WSL + VS Code)",
+    "date": "2025-09-26",
+    "stack": "Python",
+    "tags": [
+      "python",
+      "wsl",
+      "nmap"
+    ],
+    "summary": "Learning project: WSL setup, VS Code integration, and using nmap bindings from Python.",
+    "url": "projects/portscanner.html",
+    "external": false
+  },
+  {
+    "title": "GitHub Profile",
+    "date": "2025-10-01",
+    "stack": "GitHub",
+    "tags": [
+      "portfolio"
+    ],
+    "summary": "All repos and experiments.",
+    "url": "https://github.com/",
+    "external": true
+  }
+]

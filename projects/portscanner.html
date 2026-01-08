@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>How I Built a Simple Python Port Scanner (WSL + VS Code) • CyberFriday</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="description" content="CyberFriday project post: setting up WSL + VS Code and building a simple Python port scanner (learning-focused, ethical use)." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css" />
+
+  <style>
+    .postwrap{padding:18px;border-radius:24px;background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow)}
+    .postwrap h1{margin-top:0;letter-spacing:-.4px}
+    .postmeta{color:var(--muted2);font-size:.95rem;margin:0 0 14px}
+    .postwrap p{color:var(--muted);line-height:1.85}
+    .postwrap h2,.postwrap h3{color:var(--text);margin:22px 0 8px}
+    .figure{margin:14px 0 22px;text-align:center}
+    .figure img{max-width:100%;height:auto;border:1px solid var(--border);border-radius:16px}
+    .figcap{margin-top:8px;font-size:.95rem;color:var(--muted2)}
+    .note{padding:12px 14px;border-radius:16px;border:1px solid var(--border);background:var(--card2);color:var(--muted);margin:14px 0}
+    code{background:var(--card2);border:1px solid var(--border);padding:2px 6px;border-radius:8px;color:var(--text)}
+    a{ text-decoration: underline; text-underline-offset: 3px; }
+  </style>
+</head>
+
+<body data-page="post">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand__mark">CF</span>
+        <span class="brand__text">CyberFriday</span>
+      </a>
+
+      <div class="topbar__actions">
+        <button class="iconbtn" id="themeBtn" type="button" title="Toggle theme" aria-label="Toggle theme">
+          <span class="icon" aria-hidden="true">☾</span>
+        </button>
+        <button class="iconbtn" id="menuBtn" type="button" title="Menu" aria-label="Open menu">
+          <span class="icon" aria-hidden="true">≡</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="modal" id="menu" hidden>
+    <div class="modal__backdrop" data-close="true"></div>
+    <div class="modal__panel modal__panel--menu" role="dialog" aria-modal="true" aria-label="Menu">
+      <div class="modal__head">
+        <div class="menu__title">
+          <div class="menu__brand">CyberFriday</div>
+          <div class="muted tiny">Navigate</div>
+        </div>
+        <button class="iconbtn" type="button" data-close="true" aria-label="Close">✕</button>
+      </div>
+      <div class="modal__body menu__body">
+        <a class="menulink" href="../index.html">Home</a>
+        <a class="menulink" href="../writeups.html">Writeups</a>
+        <a class="menulink" href="../projects.html">Projects</a>
+        <a class="menulink" href="../notes.html">Notes</a>
+        <a class="menulink" href="../about.html">About</a>
+      </div>
+      <div class="modal__foot muted tiny"><span>Esc to close</span></div>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="pagehead">
+      <div class="container">
+        <h1 class="pagehead__title">Simple Python Port Scanner (WSL + VS Code)</h1>
+        <p class="pagehead__sub muted">
+          A CyberFriday learning project: environment setup, workflow, and a beginner port-scanning script.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <article class="postwrap reveal">
+          <p class="postmeta">
+            Posted on <strong>September 26, 2025</strong> •
+            <span class="tag">Python</span> <span class="tag">WSL</span> <span class="tag">nmap</span>
+          </p>
+
+          <p>
+            I built a simple Python port scanner after following a YouTube tutorial, but the most valuable part of the project
+            was everything around the code: getting a Linux workflow running on Windows, setting up tools, and learning how to
+            run and iterate on scripts cleanly inside a consistent environment.
+          </p>
+
+          <h2>WSL setup (what actually mattered)</h2>
+          <p>
+            The first step was getting a working Ubuntu terminal on my Windows machine using WSL.
+            My initial attempt using <code>wsl --install</code> produced errors, but installing Ubuntu explicitly
+            (for example <code>wsl --install -d Ubuntu</code>) worked reliably. After that, I could treat the environment like a
+            normal Ubuntu system: update packages, install tools, and follow Linux-based workflows without fighting Windows path
+            and dependency quirks.
+          </p>
+
+          <p>
+            For development, I used Visual Studio Code with WSL integration, so the editor and terminal operate “inside” Ubuntu.
+            This keeps Python versions and dependencies consistent and avoids the usual pain of mixing Windows and Linux tooling.
+          </p>
+
+          <div class="figure">
+            <img src="../assets/img/Portscanner_code.png" alt="VS Code with WSL terminal and Python port scanner code" />
+            <div class="figcap">
+              <strong>Figure:</strong> VS Code using an integrated Ubuntu (WSL) terminal while running the script.
+            </div>
+          </div>
+
+          <h2>Where the idea came from</h2>
+          <p>
+            I was looking for beginner-friendly security projects in Python and followed a tutorial walkthrough.
+            The implementation approach is based on the original creator’s lesson (linked below). What I’m documenting here is
+            the setup process, the workflow, and the practical takeaways I got from reproducing and experimenting with the project.
+          </p>
+
+          <p>
+            Tutorial reference:
+            <a href="https://www.youtube.com/watch?v=fhn9-PQBN7g&t=28s" target="_blank" rel="noreferrer">YouTube video</a>.
+          </p>
+
+          <h2>What I learned</h2>
+          <ul class="bullets">
+            <li>On Ubuntu, you usually run scripts with <code>python3</code> (not always <code>python</code>).</li>
+            <li>Keeping projects inside the WSL filesystem avoids weird permission and path issues.</li>
+            <li>
+              Installing tooling is straightforward in WSL:
+              <code>sudo apt update</code>, then
+              <code>sudo apt install nmap python3-nmap</code> (and optionally <code>sudo apt install python3-pip</code>).
+            </li>
+            <li>VS Code’s WSL workflow makes debugging and iteration feel like a normal Linux dev setup.</li>
+          </ul>
+
+          <h3>Ethics & permission</h3>
+          <div class="note">
+            <strong>Important:</strong> Only scan systems you own or have explicit permission to test.
+            Unauthorized scanning can violate policies or laws. A safe, permissioned target commonly used for learning is
+            <code>scanme.nmap.org</code>.
+          </div>
+
+          <p>
+            Back to <a href="../projects.html">Projects</a>.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="muted tiny">© <span id="year"></span> CyberFriday</p>
+      <p class="muted tiny"><a href="#main">Back to top</a></p>
+    </div>
+  </footer>
+
+  <script src="../assets/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+[
+  {
+    "title": "THM — Silver Platter Challange",
+    "platform": "TryHackMe",
+    "date": "2026-01-07",
+    "tags": ["writeup", "thm"],
+    "summary": "Silver Platter room writeup.",
+    "url": "read.html?md=writeups/thm/silver-platter-challenge.md"
+  },
+  {
+  "title": "Capturing and Modifying Requests Using Burp Suite",
+  "platform": "Guide",
+  "date": "2026-01-07",
+  "tags": ["guide", "proxy"],
+  "summary": "Intercepting requests with Burp and FoxyProxy.",
+  "url": "read.html?md=writeups/guides/silverpeas-proxy.md"
+  },
+  {
+    "title": "THM — Intermediate NMAP Challenge",
+    "platform": "TryHackMe",
+    "date": "2026-01-07",
+    "tags": ["writeup", "thm"],
+    "summary": "Intermediate Nmap room writeup.",
+    "url": "read.html?md=writeups/thm/intermediate-nmap-challange.md"
+  },
+  {
+    "title": "DVWA — Setup and Reflected XSS",
+    "platform": "Lab",
+    "date": "2026-01-07",
+    "tags": ["writeup", "web", "xss", "dvwa"],
+    "summary": "Setting up Damn Vulnerable Web Application (DVWA) in Docker and exploiting a reflected XSS vulnerability in a controlled lab environment.",
+    "url": "read.html?md=writeups/dvwa/setup-and-reflected-xss.md"
+  }
+
+]

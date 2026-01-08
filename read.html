@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <title>CyberFriday</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css" />
+
+  <!-- Markdown + Sanitizer -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+
+  <style>
+    /* Post layout that matches v3 look */
+    .postwrap{
+      padding:18px;border-radius:24px;background:var(--card);
+      border:1px solid var(--border);box-shadow:var(--shadow)
+    }
+    .postwrap h1{margin-top:0;letter-spacing:-.4px}
+    .postwrap p, .postwrap li{color:var(--muted);line-height:1.85}
+    .postwrap h2,.postwrap h3{margin-top:22px}
+    .postwrap a{text-decoration:underline;text-underline-offset:3px}
+    .postwrap img{
+      max-width:100%;height:auto;border-radius:16px;border:1px solid var(--border)
+    }
+    .postwrap blockquote{
+      margin:14px 0;padding:10px 14px;border-left:3px solid var(--border);
+      background:var(--card2);border-radius:12px;color:var(--muted)
+    }
+    .postwrap hr{border:0;border-top:1px solid var(--border);margin:22px 0}
+
+    /* Code blocks: “language pill + copy code” like your screenshot */
+    .codeblock{
+      border:1px solid var(--border);
+      border-radius:16px;
+      overflow:hidden;
+      background:var(--card2);
+      margin:14px 0;
+    }
+    .codeblock__head{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:10px;
+      padding:10px 12px;
+      border-bottom:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0));
+    }
+    :root[data-theme="light"] .codeblock__head{
+      background:linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,0));
+    }
+    .codeblock__lang{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:.85rem;color:var(--muted);
+      padding:4px 10px;border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+    }
+    :root[data-theme="light"] .codeblock__lang{
+      background:rgba(0,0,0,.03);
+    }
+    .codeblock__copy{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:.85rem;
+      padding:6px 10px;border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      cursor:pointer;
+      transition:transform 140ms ease, background 140ms ease;
+    }
+    .codeblock__copy:hover{transform:translateY(-1px);background:var(--card)}
+    .codeblock__copy:active{transform:translateY(0)}
+    .codeblock pre{
+      margin:0;
+      padding:14px 14px;
+      overflow:auto;
+    }
+    .codeblock code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size:.95rem;
+      color:var(--text);
+      background:transparent;
+      border:none;
+      padding:0;
+      border-radius:0;
+      white-space:pre;
+    }
+
+    /* Inline code */
+    .postwrap :not(pre) > code{
+      background:var(--card2);
+      border:1px solid var(--border);
+      padding:2px 6px;
+      border-radius:8px;
+      color:var(--text);
+    }
+
+    /* Small status line */
+    .readmeta{margin:10px 0 0;color:var(--muted2);font-size:.92rem}
+  </style>
+</head>
+
+<body data-page="read">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="index.html" aria-label="Home">
+        <span class="brand__mark">CF</span>
+        <span class="brand__text">CyberFriday</span>
+      </a>
+
+      <div class="topbar__actions">
+        <button class="iconbtn" id="themeBtn" type="button" title="Toggle theme" aria-label="Toggle theme">
+          <span class="icon" aria-hidden="true">☾</span>
+        </button>
+        <button class="iconbtn" id="menuBtn" type="button" title="Menu" aria-label="Open menu">
+          <span class="icon" aria-hidden="true">≡</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu (same as v3) -->
+  <div class="modal" id="menu" hidden>
+    <div class="modal__backdrop" data-close="true"></div>
+    <div class="modal__panel modal__panel--menu" role="dialog" aria-modal="true" aria-label="Menu">
+      <div class="modal__head">
+        <div class="menu__title">
+          <div class="menu__brand">CyberFriday</div>
+          <div class="muted tiny">Navigate</div>
+        </div>
+        <button class="iconbtn" type="button" data-close="true" aria-label="Close">✕</button>
+      </div>
+      <div class="modal__body menu__body">
+        <a class="menulink" href="index.html">Home</a>
+        <a class="menulink" href="writeups.html">Writeups</a>
+        <a class="menulink" href="projects.html">Projects</a>
+        <a class="menulink" href="notes.html">Notes</a>
+        <a class="menulink" href="about.html">About</a>
+      </div>
+      <div class="modal__foot muted tiny"><span>Esc to close</span></div>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="pagehead">
+      <div class="container">
+        <h1 class="pagehead__title" id="postTitle">Loading…</h1>
+        <p class="pagehead__sub muted" id="postSub">CyberFriday</p>
+        <p class="readmeta" id="readMeta"></p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <article id="content" class="postwrap reveal">Loading…</article>
+        <div class="spacer"></div>
+        <a class="btn btn--small btn--ghost" href="writeups.html">← Back to Writeups</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="muted tiny">© <span id="year"></span> CyberFriday</p>
+      <p class="muted tiny"><a href="#main">Back to top</a></p>
+    </div>
+  </footer>
+
+  <!-- v3 JS for theme/menu/reveal -->
+  <script src="assets/app.js" defer></script>
+
+  <script>
+    const contentEl = document.getElementById("content");
+    const titleEl = document.getElementById("postTitle");
+    const subEl = document.getElementById("postSub");
+    const metaEl = document.getElementById("readMeta");
+
+    document.getElementById("year").textContent = String(new Date().getFullYear());
+
+    function isRelative(url) {
+      return url &&
+        !url.startsWith("http://") &&
+        !url.startsWith("https://") &&
+        !url.startsWith("data:") &&
+        !url.startsWith("/") &&
+        !url.startsWith("#");
+    }
+
+    function normalizeBase(target) {
+      const u = new URL(target, window.location.href);
+      return u.href.substring(0, u.href.lastIndexOf("/") + 1);
+    }
+
+    function enhanceCodeBlocks(root) {
+      root.querySelectorAll("pre > code").forEach((codeEl) => {
+        const pre = codeEl.parentElement;
+
+        // Try to infer language from class like "language-bash"
+        const cls = Array.from(codeEl.classList).find(c => c.startsWith("language-"));
+        const lang = cls ? cls.replace("language-", "") : "code";
+
+        // Wrap pre in a styled container
+        const wrapper = document.createElement("div");
+        wrapper.className = "codeblock";
+
+        const head = document.createElement("div");
+        head.className = "codeblock__head";
+
+        const pill = document.createElement("div");
+        pill.className = "codeblock__lang";
+        pill.textContent = lang;
+
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "codeblock__copy";
+        btn.innerHTML = 'Copy code';
+
+        btn.addEventListener("click", async () => {
+          const text = codeEl.textContent || "";
+          try {
+            await navigator.clipboard.writeText(text);
+            const old = btn.textContent;
+            btn.textContent = "Copied!";
+            setTimeout(() => (btn.textContent = old), 900);
+          } catch {
+            // Fallback if clipboard blocked
+            const ta = document.createElement("textarea");
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand("copy");
+            document.body.removeChild(ta);
+            const old = btn.textContent;
+            btn.textContent = "Copied!";
+            setTimeout(() => (btn.textContent = old), 900);
+          }
+        });
+
+        head.appendChild(pill);
+        head.appendChild(btn);
+
+        // Replace in DOM
+        pre.replaceWith(wrapper);
+        wrapper.appendChild(head);
+        wrapper.appendChild(pre);
+      });
+    }
+
+    async function loadText(url) {
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error("Failed to load: " + url);
+      return await res.text();
+    }
+
+    (async function () {
+      const params = new URLSearchParams(window.location.search);
+      const mdPath = params.get("md");
+      const srcUrl = params.get("src");
+      const target = mdPath || srcUrl;
+
+      if (!target) {
+        titleEl.textContent = "Missing file";
+        contentEl.textContent = "Use read.html?md=path/to/file.md";
+        return;
+      }
+
+      try {
+        const md = await loadText(target);
+
+        // Configure marked: keep it simple + safe (sanitization is handled by DOMPurify)
+        marked.setOptions({
+          gfm: true,
+          breaks: false,
+          headerIds: true,
+          mangle: false
+        });
+
+        const rendered = marked.parse(md);
+        contentEl.innerHTML = DOMPurify.sanitize(rendered);
+
+        // Title from first H1 (if present)
+        const h1 = contentEl.querySelector("h1");
+        if (h1) {
+          titleEl.textContent = h1.textContent.trim();
+          h1.remove();
+        } else {
+          titleEl.textContent = "CyberFriday";
+        }
+
+        // Subtitle/meta
+        subEl.textContent = mdPath ? "Writeup / Guide" : "External Markdown";
+        metaEl.textContent = mdPath ? mdPath : "";
+
+        // Fix relative images + links to be relative to the markdown file
+        const base = normalizeBase(target);
+
+        contentEl.querySelectorAll("img").forEach(img => {
+          const src = img.getAttribute("src");
+          if (isRelative(src)) img.src = new URL(src, base).toString();
+        });
+
+        contentEl.querySelectorAll("a").forEach(a => {
+          const href = a.getAttribute("href");
+          if (isRelative(href)) a.href = new URL(href, base).toString();
+          // external links open in new tab
+          const resolved = a.href || "";
+          if (resolved.startsWith("http://") || resolved.startsWith("https://")) {
+            a.target = "_blank";
+            a.rel = "noreferrer";
+          }
+        });
+
+        // Make code blocks look like your screenshot + add Copy button
+        enhanceCodeBlocks(contentEl);
+
+      } catch (e) {
+        titleEl.textContent = "Couldn’t load content";
+        contentEl.textContent = String(e);
+      }
+    })();
+  </script>
+</body>
+</html>

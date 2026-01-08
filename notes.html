@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Notes • CyberFriday</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="description" content="CyberFriday — writeups, projects, and notes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body data-page="notes">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="index.html" aria-label="Home">
+        <span class="brand__mark">CF</span>
+        <span class="brand__text">CyberFriday</span>
+      </a>
+
+      <div class="topbar__actions">
+        <button class="iconbtn" id="themeBtn" type="button" title="Toggle theme" aria-label="Toggle theme">
+          <span class="icon" aria-hidden="true">☾</span>
+        </button>
+        <button class="iconbtn" id="menuBtn" type="button" title="Menu" aria-label="Open menu">
+          <span class="icon" aria-hidden="true">≡</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="modal" id="menu" hidden>
+    <div class="modal__backdrop" data-close="true"></div>
+    <div class="modal__panel modal__panel--menu" role="dialog" aria-modal="true" aria-label="Menu">
+      <div class="modal__head">
+        <div class="menu__title">
+          <div class="menu__brand">CyberFriday</div>
+          <div class="muted tiny">Navigate</div>
+        </div>
+        <button class="iconbtn" type="button" data-close="true" aria-label="Close">✕</button>
+      </div>
+      <div class="modal__body menu__body">
+        <a class="menulink" href="index.html">Home</a>
+        <a class="menulink" href="writeups.html">Writeups</a>
+        <a class="menulink" href="projects.html">Projects</a>
+        <a class="menulink" href="notes.html">Notes</a>
+        <a class="menulink" href="about.html">About</a>
+      </div>
+      <div class="modal__foot muted tiny">
+        <span>Esc to close</span>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="pagehead">
+      <div class="container">
+        <h1 class="pagehead__title">Notes</h1>
+        <p class="pagehead__sub muted">Short posts: learnings, checklists, mini-guides, updates.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="toolbar">
+          <input class="input" id="search" type="search" placeholder="Search..." autocomplete="off" />
+        </div>
+
+        <div id="contentArea">
+          <!-- populated by JS -->
+        </div>
+
+        <div class="empty" id="empty" hidden>No results.</div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="muted tiny">© <span id="year"></span> CyberFriday
+
+
+
+</p>
+      <p class="muted tiny"><a href="#main">Back to top</a></p>
+    </div>
+  </footer>
+
+  <script src="assets/app.js" defer></script>
+
+</body>
+</html>

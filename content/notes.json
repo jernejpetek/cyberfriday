@@ -1,0 +1,9 @@
+[
+  {
+  "title": "Nmap Scan Patterns I Use Frequently",
+  "date": "2026-01-08",
+  "tags": ["nmap", "enumeration", "recon", "notes"],
+  "summary": "Common Nmap scan commands and when to use them.",
+  "url": "read.html?md=notes/nmap-scan-patterns.md"
+  }
+]

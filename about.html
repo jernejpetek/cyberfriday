@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>About • CyberFriday</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="description" content="CyberFriday — writeups, projects, and notes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body data-page="about">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="index.html" aria-label="Home">
+        <span class="brand__mark">CF</span>
+        <span class="brand__text">CyberFriday</span>
+      </a>
+
+      <div class="topbar__actions">
+        <button class="iconbtn" id="themeBtn" type="button" title="Toggle theme" aria-label="Toggle theme">
+          <span class="icon" aria-hidden="true">☾</span>
+        </button>
+        <button class="iconbtn" id="menuBtn" type="button" title="Menu" aria-label="Open menu">
+          <span class="icon" aria-hidden="true">≡</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="modal" id="menu" hidden>
+    <div class="modal__backdrop" data-close="true"></div>
+    <div class="modal__panel modal__panel--menu" role="dialog" aria-modal="true" aria-label="Menu">
+      <div class="modal__head">
+        <div class="menu__title">
+          <div class="menu__brand">CyberFriday</div>
+          <div class="muted tiny">Navigate</div>
+        </div>
+        <button class="iconbtn" type="button" data-close="true" aria-label="Close">✕</button>
+      </div>
+      <div class="modal__body menu__body">
+        <a class="menulink" href="index.html">Home</a>
+        <a class="menulink" href="writeups.html">Writeups</a>
+        <a class="menulink" href="projects.html">Projects</a>
+        <a class="menulink" href="notes.html">Notes</a>
+        <a class="menulink" href="about.html">About</a>
+      </div>
+      <div class="modal__foot muted tiny">
+        <span>Esc to close</span>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="pagehead">
+      <div class="container">
+        <h1 class="pagehead__title">About</h1>
+        <p class="pagehead__sub muted">Bio • Focus • Links.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="aboutgrid">
+          <div class="card reveal">
+            <h2 class="h2">Hi, I’m JP 👋</h2>
+            <p class="muted">
+              <p>
+                The creator of this website and the person behind CyberFriday.
+                CyberFriday is where I document my hands-on work in cyber security through
+                writeups, guides, and small projects.
+              </p>
+
+              <p>
+                My focus is learning by doing and sharing what I learn. I work through labs,
+                CTFs, and practical exercises, then turn that experience into clear,
+                structured writeups that document both the process and the lessons behind it.
+              </p>
+
+              <p>
+                In addition to hands-on work, I also publish personal notes and preparation
+                material for certifications as part of my learning process, keeping everything
+                organized and accessible in one place.
+              </p>
+
+              <p>
+                CyberFriday is built as a public knowledge base and a growing body of work.
+                Everything here comes from real experimentation — from enumeration notes
+                and exploitation paths to tools, projects, and certification prep developed
+                along the way.
+              </p>
+
+              <p>
+                The goal is simple: build skill through practice, document what works,
+                and share the journey as CyberFriday continues to grow.
+              </p>
+            </p>
+
+            <div class="chips">
+              <span class="chip">Writeups</span>
+              <span class="chip">Guides</span>
+              <span class="chip">Labs</span>
+              <span class="chip">Projects</span>
+              <span class="chip">Notes</span>
+            </div>
+
+            <div class="spacer"></div>
+
+            <h3 class="h3">Current focus</h3>
+            <ul class="bullets">
+              <li>Publishing structured security writeups from labs, challanges, and hands-on exercises</li>
+              <li>Refining fundamentals through consistent practice and documentation</li>
+              <li>Building and iterating on small tools and projects under CyberFriday</li>
+              <li>Documenting notes and preparation material for cyber security certifications</li>
+            </ul>
+          </div>
+
+          <div class="card reveal">
+            <h2 class="h2">My Social Links</h2>
+            <ul class="links">
+              <li><a href="https://github.com/jernejpetek" target="_blank" rel="noreferrer">GitHub</a></li>
+              <li><a href="https://www.linkedin.com/in/jpetek/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+              <li><a href="https://tryhackme.com/p/JPetek" target="_blank" rel="noreferrer">TryHackMe</a></li>
+            </ul>
+
+            <div class="spacer"></div>
+
+            <h3 class="h3">Contact</h3>
+            <p class="muted">For questions, collaboration, or anything related to CyberFriday, you can reach me here.</p>
+            <a class="btn btn--small btn--ghost" href="mailto:you@example.com">cyberfriday.contact@proton.me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="muted tiny">© <span id="year"></span> CyberFriday
+
+
+
+</p>
+      <p class="muted tiny"><a href="#main">Back to top</a></p>
+    </div>
+  </footer>
+
+  <script src="assets/app.js" defer></script>
+
+</body>
+</html>
