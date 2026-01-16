@@ -1,3 +1,4 @@
+# Docker setup and demonstration on testing for reflected XSS
 # INTRO
 
 I built this Damn Vulnerable Web Application (DVWA) instance inside Docker as a personal, disposable lab for learning web-app security and practising bug-bounty techniques. Running DVWA in containers keeps the whole environment isolated and easily torn down, so I can explore SQLi, XSS, CSRF and other flaws without risking real systems, exposing services to the internet, or accidentally crossing legal boundaries.
