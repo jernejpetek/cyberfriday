@@ -146,16 +146,16 @@ Saving output makes it easier to:
 
 |Option / Flag|Description|
 |---|---|
-|dir|Directory and file brute forcing mode|
-|vhost|Virtual host discovery mode|
-|dns|DNS subdomain enumeration mode|
-|-u|Target URL|
-|-d|Target domain (DNS mode)|
-|-w|Wordlist to use|
-|-x|File extensions to append|
-|-b|Exclude specific HTTP status codes|
-|-t|Number of concurrent threads|
-|-o|Output results to a file|
+|`dir`|Directory and file brute forcing mode|
+|`vhost`|Virtual host discovery mode|
+|`dns`|DNS subdomain enumeration mode|
+|`-u`|Target URL|
+|`-d`|Target domain (DNS mode)|
+|`-w`|Wordlist to use|
+|`-x`|File extensions to append|
+|`-b`|Exclude specific HTTP status codes|
+|`-t`|Number of concurrent threads|
+|`-o`|Output results to a file|
 
 - I usually start with **dir mode** and expand as needed
 - Combine Gobuster results with manual testing and `curl`
