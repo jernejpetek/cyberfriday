@@ -1,3 +1,5 @@
+# Gobuster: Common Enumeration Commands
+
 Gobuster is a fast brute-force enumeration tool used to discover hidden content on web servers and infrastructure. It is commonly used to find unlinked directories, files, virtual hosts, and subdomains that are not visible through normal browsing.
 
 In both CTFs and professional penetration tests, Gobuster comes in handy during early web reconnaissance, helping identify attack surfaces such as admin panels, backup files, or internal applications. Its speed and simplicity make it especially effective when quickly mapping a target and uncovering functionality that may lead to further exploitation.
