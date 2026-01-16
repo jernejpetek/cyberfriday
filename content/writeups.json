@@ -29,7 +29,7 @@
     "date": "2026-01-07",
     "tags": ["writeup", "web", "xss", "dvwa"],
     "summary": "Setting up Damn Vulnerable Web Application (DVWA) in Docker and exploiting a reflected XSS vulnerability in a controlled lab environment.",
-    "url": "read.html?md=writeups/dvwa/setup-and-reflected-xss.md"
+    "url": "read.html?md=writeups/Lab/setup-and-reflected-xss.md"
   }
 
 ]
