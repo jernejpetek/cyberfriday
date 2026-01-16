@@ -30,6 +30,14 @@
     "tags": ["writeup", "web", "xss", "dvwa"],
     "summary": "Setting up Damn Vulnerable Web Application (DVWA) in Docker and exploiting a reflected XSS vulnerability in a controlled lab environment.",
     "url": "read.html?md=writeups/Lab/setup-and-reflected-xss.md"
+  },
+  {
+  "title": "How to Test CVE-2025-55182 with React2Shell Scanner",
+  "platform": "Guide",
+  "date": "2026-01-10",
+  "tags": ["guide", "scanner", "docker"],
+  "summary": "Testing for CVE-2025-55182 using the React2Shell scanner.",
+  "url": "read.html?md=writeups/guides/react2shell-testing.md"
   }
 
 ]
