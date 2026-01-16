@@ -5,5 +5,12 @@
   "tags": ["nmap", "enumeration", "recon", "notes"],
   "summary": "Common Nmap scan commands and when to use them.",
   "url": "read.html?md=notes/nmap-scan-patterns.md"
+  },
+  {
+  "title": "Gobuster: Common Enumeration Commands",
+  "date": "2026-01-16",
+  "tags": ["gobuster", "enumeration", "recon", "notes"],
+  "summary": "Common Gobuster scan commands, when to use them and what they mean.",
+  "url": "read.html?md=notes/gobuster-commands.md"
   }
 ]
