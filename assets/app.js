@@ -6,6 +6,7 @@ function escapeHtml(str = "") {
     "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"
   }[m]));
 }
+
 function sortByDateDesc(a,b){ return (b.date||"").localeCompare(a.date||""); }
 
 function initTheme(){
@@ -112,15 +113,15 @@ async function bootWriteups(){
     all = await loadJson("content/writeups.json");
   }catch(err){
     console.error(err);
-    area.innerHTML = `<div class="empty">Couldn’t load writeups.json</div>`;
+    if (area) area.innerHTML = `<div class="empty">Couldn’t load writeups.json</div>`;
     return;
   }
 
   const render = (q) => {
     const filtered = applySearch(all, q).slice().sort(sortByDateDesc);
-    area.innerHTML = `<div class="grid grid--cards">${renderCardList(filtered)}</div>`;
-    initReveal(area);
-    empty.hidden = filtered.length !== 0;
+    if (area) area.innerHTML = `<div class="grid grid--cards">${renderCardList(filtered)}</div>`;
+    if (area) initReveal(area);
+    if (empty) empty.hidden = filtered.length !== 0;
   };
 
   render("");
@@ -136,15 +137,15 @@ async function bootProjects(){
     all = await loadJson("content/projects.json");
   }catch(err){
     console.error(err);
-    area.innerHTML = `<div class="empty">Couldn’t load projects.json</div>`;
+    if (area) area.innerHTML = `<div class="empty">Couldn’t load projects.json</div>`;
     return;
   }
 
   const render = (q) => {
     const filtered = applySearch(all, q).slice().sort(sortByDateDesc);
-    area.innerHTML = `<div class="grid grid--cards">${renderCardList(filtered)}</div>`;
-    initReveal(area);
-    empty.hidden = filtered.length !== 0;
+    if (area) area.innerHTML = `<div class="grid grid--cards">${renderCardList(filtered)}</div>`;
+    if (area) initReveal(area);
+    if (empty) empty.hidden = filtered.length !== 0;
   };
 
   render("");
@@ -160,15 +161,15 @@ async function bootNotes(){
     all = await loadJson("content/notes.json");
   }catch(err){
     console.error(err);
-    area.innerHTML = `<div class="empty">Couldn’t load notes.json</div>`;
+    if (area) area.innerHTML = `<div class="empty">Couldn’t load notes.json</div>`;
     return;
   }
 
   const render = (q) => {
     const filtered = applySearch(all, q).slice().sort(sortByDateDesc);
-    area.innerHTML = `<div class="grid grid--cards">${renderCardList(filtered)}</div>`;
-    initReveal(area);
-    empty.hidden = filtered.length !== 0;
+    if (area) area.innerHTML = `<div class="grid grid--cards">${renderCardList(filtered)}</div>`;
+    if (area) initReveal(area);
+    if (empty) empty.hidden = filtered.length !== 0;
   };
 
   render("");
@@ -184,24 +185,73 @@ async function bootLearningResources(){
     all = await loadJson("content/learning-resources.json");
   }catch(err){
     console.error(err);
-    area.innerHTML = `<div class="empty">Couldn’t load learning-resources.json</div>`;
+    if (area) area.innerHTML = `<div class="empty">Couldn’t load learning-resources.json</div>`;
     return;
   }
 
   const render = (q) => {
     const filtered = applySearch(all, q).slice().sort(sortByDateDesc);
-    area.innerHTML = `<div class="grid grid--cards">${renderCardList(filtered)}</div>`;
-    initReveal(area);
-    empty.hidden = filtered.length !== 0;
+    if (area) area.innerHTML = `<div class="grid grid--cards">${renderCardList(filtered)}</div>`;
+    if (area) initReveal(area);
+    if (empty) empty.hidden = filtered.length !== 0;
   };
 
   render("");
   $("#search")?.addEventListener("input", e => render(e.target.value));
 }
 
+/* Read page: set correct Back button */
+function bootRead(){
+  const backBtn = $("#backBtn");
+  if (!backBtn) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const mdPath = params.get("md");
+  const srcUrl = params.get("src");
+
+  // External markdown -> hide back button
+  if (!mdPath && srcUrl) {
+    backBtn.hidden = true;
+    return;
+  }
+
+  // No target -> hide
+  if (!mdPath) {
+    backBtn.hidden = true;
+    return;
+  }
+
+  let href = "";
+  let label = "";
+
+  if (mdPath.startsWith("writeups/")) {
+    href = "writeups.html";
+    label = "← Back to Writeups";
+  } else if (mdPath.startsWith("projects/")) {
+    href = "projects.html";
+    label = "← Back to Projects";
+  } else if (mdPath.startsWith("notes/")) {
+    href = "notes.html";
+    label = "← Back to Notes";
+  } else if (mdPath.startsWith("learning-resources/")) {
+    href = "learning-resources.html";
+    label = "← Back to Learning Resources";
+  }
+
+  if (href && label) {
+    backBtn.href = href;
+    backBtn.textContent = label;
+    backBtn.hidden = false;
+  } else {
+    backBtn.hidden = true;
+  }
+}
+
 /* Boot */
 (async function(){
-  $("#year").textContent = String(new Date().getFullYear());
+  const yearEl = $("#year");
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
   initTheme();
   initMenu();
   initReveal(document);
@@ -212,4 +262,5 @@ async function bootLearningResources(){
   if (page === "projects") await bootProjects();
   if (page === "notes") await bootNotes();
   if (page === "learning-resources") await bootLearningResources();
+  if (page === "read") bootRead();
 })();
