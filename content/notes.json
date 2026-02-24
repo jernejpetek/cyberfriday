@@ -2,6 +2,7 @@
   {
   "title": "Nmap Scan Patterns I Use Frequently",
   "date": "2026-01-08",
+  "type": "Cheat sheet",
   "tags": ["nmap", "enumeration", "recon", "notes"],
   "summary": "Common Nmap scan commands and when to use them.",
   "url": "read.html?md=notes/nmap-scan-patterns.md"
@@ -9,6 +10,7 @@
   {
   "title": "Gobuster: Common Enumeration Commands",
   "date": "2026-01-16",
+  "type": "Cheat sheet",
   "tags": ["gobuster", "enumeration", "recon", "notes"],
   "summary": "Common Gobuster scan commands, when to use them and what they mean.",
   "url": "read.html?md=notes/gobuster-commands.md"
@@ -16,6 +18,7 @@
   {
   "title": "curl Basics for Web Testing",
   "date": "2026-01-16",
+  "type": "Cheat sheet",
   "tags": ["curl", "web testing", "recon", "notes"],
   "summary": "Basic curl commands and their use cases explained.",
   "url": "read.html?md=notes/curl-basics.md"
