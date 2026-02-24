@@ -28,9 +28,11 @@ AES uses fixed block sizes of 128 bits and variable key lengths (128,
 192, 256 bits). The number of transformation rounds depends on the key
 length.
 
-The security of symmetric encryption depends on: - Key entropy - Secure
-key storage - Protection against brute-force attempts - Proper
-implementation (avoiding side-channel leakage)
+The security of symmetric encryption depends on: 
+- Key entropy 
+- Secure key storage 
+- Protection against brute-force attempts 
+- Proper implementation (avoiding side-channel leakage)
 
 Modes of operation define how block ciphers process larger data streams:
 
@@ -65,14 +67,19 @@ Nonrepudiation depends on exclusive control of the private key.
 
 ## Hashing and Collision Resistance
 
-Hash functions must demonstrate: - Preimage resistance - Second preimage
-resistance - Collision resistance
+Hash functions must demonstrate: 
+- Preimage resistance 
+- Second preimage resistance 
+- Collision resistance
 
 If two different inputs produce the same hash output (collision), trust
 in the algorithm weakens.
 
-Hashing is used in: - Digital signatures - File verification - Password
-storage - Blockchain validation
+Hashing is used in: 
+- Digital signatures 
+- File verification 
+- Password storage 
+- Blockchain validation
 
 Password hashing requires salting and iterative processing (key
 stretching) to resist brute-force attacks.
@@ -120,8 +127,10 @@ Virtual LANs logically separate broadcast domains within a switch.
 802.1Q tagging inserts a VLAN identifier into Ethernet frames. This
 allows trunk ports to carry traffic for multiple VLANs.
 
-Security considerations include: - VLAN hopping attacks - Native VLAN
-misconfiguration - Improper trunk configuration
+Security considerations include:
+- VLAN hopping attacks 
+- Native VLAN misconfiguration 
+- Improper trunk configuration
 
 Inter-VLAN communication requires routing at Layer 3.
 
@@ -132,8 +141,10 @@ Segmentation limits lateral movement during compromise.
 Firewalls operate based on rule evaluation. Rules are processed
 sequentially. The first match determines action.
 
-Types of firewalls include: - Packet filtering - Stateful inspection -
-Application-layer filtering
+Types of firewalls include:
+- Packet filtering 
+- Stateful inspection 
+- Application-layer filtering
 
 Stateful firewalls track session state. Application-layer firewalls
 inspect payload data.
@@ -146,8 +157,10 @@ Intrusion Detection Systems (IDS) monitor traffic and generate alerts.
 
 Intrusion Prevention Systems (IPS) actively block malicious traffic.
 
-Detection methods include: - Signature-based detection - Anomaly-based
-detection - Behavior-based detection
+Detection methods include:
+- Signature-based detection 
+- Anomaly-based detection 
+- Behavior-based detection
 
 Establishing a baseline is necessary for anomaly detection accuracy.
 
@@ -163,8 +176,10 @@ applications.
 By manipulating file path input parameters (e.g., using ../ sequences),
 attackers may access restricted files.
 
-Proper mitigation requires: - Input sanitization - Canonical path
-validation - Principle of least privilege for application processes
+Proper mitigation requires: 
+- Input sanitization 
+- Canonical path validation 
+- Principle of least privilege for application processes
 
 ## LDAP Injection
 
@@ -185,8 +200,9 @@ spoofing the victim's IP.
 
 All hosts respond to the victim, overwhelming its network capacity.
 
-Mitigation includes: - Disabling IP-directed broadcasts - Filtering
-spoofed traffic
+Mitigation includes: 
+- Disabling IP-directed broadcasts 
+- Filtering spoofed traffic
 
 ## Password Spraying vs Dictionary Attacks
 
@@ -204,11 +220,16 @@ credential attacks.
 
 ## Incident Response Depth
 
-Preparation includes: - Defined roles - Communication channels -
-Forensic readiness - Backup verification
+Preparation includes: 
+- Defined roles 
+- Communication channels 
+- Forensic readiness 
+- Backup verification
 
-Containment strategies include: - Network isolation - Credential
-resets - Blocking malicious IP ranges
+Containment strategies include:
+- Network isolation 
+- Credential resets 
+- Blocking malicious IP ranges
 
 Eradication removes malware, closes vulnerabilities, and patches
 exploited systems.
