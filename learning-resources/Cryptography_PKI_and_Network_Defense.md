@@ -247,8 +247,11 @@ Annualized Rate of Occurrence (ARO) estimates frequency.
 
 Annualized Loss Expectancy (ALE) = SLE × ARO.
 
-Risk treatment options include: - Mitigation - Transfer - Acceptance -
-Avoidance
+Risk treatment options include: 
+- Mitigation
+- Transfer
+- Acceptance
+- Avoidance
 
 Cybersecurity insurance represents risk transfer.
 
