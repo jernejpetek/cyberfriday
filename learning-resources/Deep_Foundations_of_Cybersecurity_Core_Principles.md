@@ -37,10 +37,11 @@ communications to prevent interception and modification.
 Data in use protection focuses on controlling memory access and
 preventing unauthorized processes from reading sensitive information.
 
-Confidentiality fails when: - Weak authentication allows unauthorized
-access. - Encryption keys are improperly stored. - Access controls are
-misconfigured. - Sensitive data is overexposed through excessive
-permissions.
+Confidentiality fails when: 
+- Weak authentication allows unauthorized access. 
+- Encryption keys are improperly stored. 
+- Access controls are misconfigured. 
+- Sensitive data is overexposed through excessive permissions.
 
 Confidentiality is therefore enforced not only through cryptography but
 through identity management and least privilege design.
@@ -65,9 +66,10 @@ provides integrity and nonrepudiation.
 Integrity also applies to software distribution. Code signing ensures
 that executable files have not been modified since publication.
 
-Integrity fails when: - Hash algorithms suffer collision
-vulnerabilities. - Logs are not protected from alteration. - Software
-updates are unsigned or improperly validated.
+Integrity fails when: 
+- Hash algorithms suffer collision vulnerabilities. 
+- Logs are not protected from alteration. 
+- Software updates are unsigned or improperly validated.
 
 ## Availability
 
@@ -82,10 +84,11 @@ Denial-of-service attacks directly target availability by exhausting
 system resources. Infrastructure failures also threaten availability if
 redundancy is not properly implemented.
 
-Availability engineering includes: - RAID configurations for storage
-redundancy. - Multiple network paths to avoid single points of
-failure. - Geographic replication of critical systems. - Regular backup
-verification and testing.
+Availability engineering includes: 
+- RAID configurations for storage redundancy. 
+- Multiple network paths to avoid single points of failure. 
+- Geographic replication of critical systems. 
+- Regular backup verification and testing.
 
 A secure system must balance confidentiality, integrity, and
 availability. Overemphasis on one can weaken another. Excessive
@@ -105,9 +108,9 @@ permissions.
 Authentication verifies identity claims. Authentication mechanisms are
 divided into three categories:
 
--   Something you know (passwords, PINs)
--   Something you have (smartcards, hardware tokens)
--   Something you are (biometrics)
+- Something you know (passwords, PINs)
+- Something you have (smartcards, hardware tokens)
+- Something you are (biometrics)
 
 True multi-factor authentication requires combining different
 categories. Using two passwords is not multi-factor authentication.
