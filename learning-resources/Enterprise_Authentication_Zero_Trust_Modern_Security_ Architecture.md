@@ -16,31 +16,31 @@ using symmetric cryptography and a trusted third-party model.
 
 A Kerberos environment includes:
 
--   Key Distribution Center (KDC)
--   Authentication Server (AS)
--   Ticket Granting Server (TGS)
--   Client
--   Service Server
+- Key Distribution Center (KDC)
+- Authentication Server (AS)
+- Ticket Granting Server (TGS)
+- Client
+- Service Server
 
 The KDC consists of the AS and TGS.
 
 ## Authentication Flow
 
-1.  The client authenticates to the Authentication Server.
-2.  The AS issues a Ticket Granting Ticket (TGT).
-3.  The client presents the TGT to the TGS to request access to a
-    service.
-4.  The TGS issues a service ticket.
-5.  The client presents the service ticket to the target server.
+1. The client authenticates to the Authentication Server.
+2. The AS issues a Ticket Granting Ticket (TGT).
+3. The client presents the TGT to the TGS to request access to a
+   service.
+4. The TGS issues a service ticket.
+5. The client presents the service ticket to the target server.
 
 Passwords are never transmitted after initial authentication. Instead,
 session keys and time-sensitive tickets are used.
 
 ## Security Considerations
 
--   Time synchronization is mandatory.
--   Ticket lifetimes limit replay attacks.
--   If the KDC is compromised, the entire domain trust model collapses.
+- Time synchronization is mandatory.
+- Ticket lifetimes limit replay attacks.
+- If the KDC is compromised, the entire domain trust model collapses.
 
 Pass-the-ticket attacks exploit stolen Kerberos tickets similarly to
 pass-the-hash attacks in NTLM environments.
@@ -54,10 +54,10 @@ trust exists inside or outside the network boundary.
 
 ## Core Principles
 
--   Verify explicitly.
--   Enforce least privilege.
--   Assume breach.
--   Continuously monitor trust state.
+- Verify explicitly.
+- Enforce least privilege.
+- Assume breach.
+- Continuously monitor trust state.
 
 Traditional perimeter-based security assumes internal trust. Zero Trust
 removes that assumption.
@@ -66,19 +66,19 @@ removes that assumption.
 
 Zero Trust architectures typically include:
 
--   Policy Decision Point (PDP)
--   Policy Enforcement Point (PEP)
--   Identity provider
--   Continuous monitoring systems
+- Policy Decision Point (PDP)
+- Policy Enforcement Point (PEP)
+- Identity provider
+- Continuous monitoring systems
 
 Access decisions are dynamic and context-aware. Factors evaluated may
 include:
 
--   Device health
--   User role
--   Geolocation
--   Time of access
--   Behavioral patterns
+- Device health
+- User role
+- Geolocation
+- Time of access
+- Behavioral patterns
 
 Microsegmentation reduces lateral movement by enforcing granular access
 controls between workloads.
@@ -93,18 +93,18 @@ Cloud security operates under shared responsibility models.
 
 In Infrastructure as a Service (IaaS):
 
--   Provider secures physical infrastructure.
--   Customer secures operating systems, applications, and data.
+- Provider secures physical infrastructure.
+- Customer secures operating systems, applications, and data.
 
 In Platform as a Service (PaaS):
 
--   Provider manages runtime environment.
--   Customer manages application code and data.
+- Provider manages runtime environment.
+- Customer manages application code and data.
 
 In Software as a Service (SaaS):
 
--   Provider manages the full stack.
--   Customer manages user access and data governance.
+- Provider manages the full stack.
+- Customer manages user access and data governance.
 
 Misunderstanding shared responsibility leads to configuration exposure.
 
@@ -114,9 +114,9 @@ Multiple customers share physical hardware.
 
 Isolation mechanisms include:
 
--   Hypervisor controls
--   Virtual network segmentation
--   Encryption of tenant data
+- Hypervisor controls
+- Virtual network segmentation
+- Encryption of tenant data
 
 Misconfiguration may expose storage buckets or virtual networks
 publicly.
@@ -135,22 +135,22 @@ development phase.
 
 ## Secure SDLC Phases
 
--   Requirements analysis
--   Secure design
--   Implementation
--   Testing
--   Deployment
--   Maintenance
+- Requirements analysis
+- Secure design
+- Implementation
+- Testing
+- Deployment
+- Maintenance
 
 Security controls must be embedded early to reduce remediation cost.
 
 ## Code Security Practices
 
--   Input validation
--   Parameterized queries
--   Output encoding
--   Dependency management
--   Static and dynamic analysis
+- Input validation
+- Parameterized queries
+- Output encoding
+- Dependency management
+- Static and dynamic analysis
 
 ## DevSecOps Integration
 
@@ -158,9 +158,9 @@ Security is integrated into CI/CD pipelines.
 
 Automation ensures:
 
--   Vulnerability scanning of dependencies
--   Code quality checks
--   Infrastructure-as-code validation
+- Vulnerability scanning of dependencies
+- Code quality checks
+- Infrastructure-as-code validation
 
 Failure to integrate security early increases exposure to injection and
 misconfiguration vulnerabilities.
@@ -186,9 +186,9 @@ Victims connect unknowingly, exposing credentials.
 
 Mitigation includes:
 
--   Certificate-based authentication
--   Wireless intrusion detection systems
--   User awareness training
+- Certificate-based authentication
+- Wireless intrusion detection systems
+- User awareness training
 
 ## War Driving
 
@@ -208,10 +208,10 @@ Establishes a secure channel between peers.
 
 Negotiates:
 
--   Encryption algorithm
--   Hash algorithm
--   Diffie-Hellman group
--   Authentication method
+- Encryption algorithm
+- Hash algorithm
+- Diffie-Hellman group
+- Authentication method
 
 Diffie-Hellman allows secure key exchange over insecure channels.
 
@@ -221,9 +221,9 @@ Defines parameters for data encryption.
 
 Creates:
 
--   Symmetric session keys
--   Lifetime values
--   Traffic selectors
+- Symmetric session keys
+- Lifetime values
+- Traffic selectors
 
 Improper configuration may prevent communication between peers requiring
 IPSec.
@@ -238,10 +238,10 @@ Digital forensics preserves evidence integrity.
 
 Documents:
 
--   Who collected evidence
--   When it was collected
--   How it was stored
--   Who accessed it
+- Who collected evidence
+- When it was collected
+- How it was stored
+- Who accessed it
 
 Failure to maintain chain of custody invalidates evidence in legal
 proceedings.
@@ -268,9 +268,9 @@ activity.
 
 Requires:
 
--   Normal traffic profiling
--   Statistical thresholds
--   Continuous tuning
+- Normal traffic profiling
+- Statistical thresholds
+- Continuous tuning
 
 ## Threat Hunting
 
@@ -279,9 +279,9 @@ alerts are triggered.
 
 Combines:
 
--   Endpoint telemetry
--   Network flow analysis
--   User behavior analytics
+- Endpoint telemetry
+- Network flow analysis
+- User behavior analytics
 
 ------------------------------------------------------------------------
 
