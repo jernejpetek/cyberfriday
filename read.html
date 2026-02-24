@@ -25,6 +25,10 @@
     .postwrap p, .postwrap li{color:var(--muted);line-height:1.85}
     .postwrap h2,.postwrap h3{margin-top:22px}
     .postwrap a{text-decoration:underline;text-underline-offset:3px}
+
+    /* Fix: never underline the top-left brand link on this page */
+    .brand{ text-decoration: none !important; }
+
     .postwrap img{
       max-width:100%;height:auto;border-radius:16px;border:1px solid var(--border)
     }
@@ -143,7 +147,6 @@
         <a class="menulink" href="notes.html">Notes</a>
         <a class="menulink" href="learning-resources.html">Learning Resources</a>
         <a class="menulink" href="about.html">About</a>
-      
       </div>
       <div class="modal__foot muted tiny"><span>Esc to close</span></div>
     </div>
@@ -295,8 +298,21 @@
           titleEl.textContent = "CyberFriday";
         }
 
-        // Subtitle/meta
-        subEl.textContent = mdPath ? "Writeup / Guide" : "External Markdown";
+        // Subtitle/meta (fixed: reflect the section)
+        if (!mdPath) {
+          subEl.textContent = "External Markdown";
+        } else if (mdPath.startsWith("writeups/")) {
+          subEl.textContent = "Writeup / Guide";
+        } else if (mdPath.startsWith("projects/")) {
+          subEl.textContent = "Project";
+        } else if (mdPath.startsWith("notes/")) {
+          subEl.textContent = "Note";
+        } else if (mdPath.startsWith("learning-resources/")) {
+          subEl.textContent = "Learning Resource";
+        } else {
+          subEl.textContent = "CyberFriday";
+        }
+
         metaEl.textContent = mdPath ? mdPath : "";
 
         // Fix relative images + links to be relative to the markdown file
