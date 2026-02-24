@@ -87,10 +87,10 @@ insight.
 
 ## Intelligence Sources
 
--  Open-source intelligence (OSINT)
--  Commercial threat feeds
--  Information sharing communities
--  Internal telemetry
+- Open-source intelligence (OSINT)
+- Commercial threat feeds
+- Information sharing communities
+- Internal telemetry
 
 ## Intelligence Types
 
@@ -125,10 +125,10 @@ Application restrictions - Mandatory PIN enforcement
 
 ## Mobile Threats
 
--  Malicious applications
--  Jailbreaking or rooting
--  Insecure Wi-Fi connections
--  SMS phishing (smishing)
+- Malicious applications
+- Jailbreaking or rooting
+- Insecure Wi-Fi connections
+- SMS phishing (smishing)
 
 Containerization isolates corporate data from personal applications.
 
@@ -140,10 +140,10 @@ IoT devices often lack strong security controls.
 
 ## IoT Risks
 
--  Default credentials
--  Infrequent patching
--  Weak encryption
--  Lack of monitoring
+- Default credentials
+- Infrequent patching
+- Weak encryption
+- Lack of monitoring
 
 Embedded systems may be difficult to update due to vendor constraints.
 
@@ -181,10 +181,10 @@ software providers.
 
 Mitigation includes:
 
--  Vendor risk assessments
--  Code integrity verification
--  Hardware validation
--  Continuous monitoring of third-party risk
+- Vendor risk assessments
+- Code integrity verification
+- Hardware validation
+- Continuous monitoring of third-party risk
 
 Compromise at the supply chain level can introduce widespread systemic
 risk.
