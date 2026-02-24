@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css" />
 </head>
+
 <body data-page="learning-resources">
   <a class="skip" href="#main">Skip to content</a>
 
@@ -60,13 +61,23 @@
     <section class="pagehead">
       <div class="container">
         <h1 class="pagehead__title">Learning Resources</h1>
-        <p class="pagehead__sub muted"></p>
+        <p class="pagehead__sub muted">Curated study material and foundational deep-dives.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <!-- Content goes here -->
+
+        <div class="toolbar">
+          <input class="input" id="search" type="search" placeholder="Search..." autocomplete="off" />
+        </div>
+
+        <div id="contentArea">
+          <!-- populated by JS -->
+        </div>
+
+        <div class="empty" id="empty" hidden>No results.</div>
+
       </div>
     </section>
   </main>
