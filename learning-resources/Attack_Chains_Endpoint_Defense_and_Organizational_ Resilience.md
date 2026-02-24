@@ -13,9 +13,12 @@ command and control, and data exfiltration.
 
 ## Initial Access Vectors
 
-Initial compromise may occur through: - Phishing-based credential
-theft - Exploitation of public-facing applications - Misconfigured cloud
-storage - Stolen VPN credentials - Supply chain compromise
+Initial compromise may occur through: 
+- Phishing-based credential theft
+- Exploitation of public-facing applications
+- Misconfigured cloud storage
+- Stolen VPN credentials
+- Supply chain compromise
 
 Initial access does not guarantee high privilege. Attackers often begin
 with limited permissions.
@@ -28,17 +31,23 @@ beyond what was originally granted.
 Vertical escalation increases privilege level (e.g., user to
 administrator). Horizontal escalation accesses peer-level accounts.
 
-Common escalation methods include: - Exploiting kernel vulnerabilities -
-Credential dumping - Misconfigured service permissions - Token
-impersonation
+Common escalation methods include:
+- Exploiting kernel vulnerabilities
+- Credential dumping
+- Misconfigured service permissions
+- Token impersonation
 
 ## Lateral Movement
 
 Once elevated privileges are obtained, attackers attempt lateral
 movement across systems.
 
-Techniques include: - Pass-the-hash - Pass-the-ticket - Remote service
-exploitation - Remote desktop misuse - WMI and PowerShell remoting abuse
+Techniques include:
+- Pass-the-hash 
+- Pass-the-ticket 
+- Remote service exploitation 
+- Remote desktop misuse 
+- WMI and PowerShell remoting abuse
 
 Segmentation and least privilege limit lateral spread.
 
@@ -47,8 +56,10 @@ Segmentation and least privilege limit lateral spread.
 Compromised hosts communicate with attacker infrastructure using covert
 channels.
 
-Common C2 channels: - HTTPS beaconing - DNS tunneling - Encrypted web
-traffic disguised as legitimate traffic
+Common C2 channels: 
+- HTTPS beaconing 
+- DNS tunneling 
+- Encrypted web traffic disguised as legitimate traffic
 
 Detection requires behavioral and anomaly analysis.
 
@@ -62,9 +73,12 @@ collection.
 
 ## Behavioral Monitoring
 
-EDR tools track: - Process creation events - File modifications -
-Registry changes - Network connections - Parent-child process
-relationships
+EDR tools track: 
+- Process creation events 
+- File modifications 
+- Registry changes 
+- Network connections 
+- Parent-child process relationships
 
 Suspicious activity such as unusual PowerShell execution or credential
 dumping patterns triggers alerts.
@@ -74,8 +88,10 @@ dumping patterns triggers alerts.
 Fileless malware resides in memory and avoids writing malicious binaries
 to disk.
 
-Memory injection techniques include: - DLL injection - Reflective
-loading - Process hollowing
+Memory injection techniques include: 
+- DLL injection 
+- Reflective loading 
+- Process hollowing
 
 Detection relies on runtime monitoring rather than static file scanning.
 
@@ -95,8 +111,10 @@ Data protection extends beyond encryption.
 Organizations classify data into sensitivity tiers such as public,
 internal, confidential, and restricted.
 
-Classification determines: - Storage requirements - Transmission
-controls - Retention policies
+Classification determines:
+- Storage requirements 
+- Transmission controls 
+- Retention policies
 
 ## Data Loss Prevention (DLP)
 
@@ -130,9 +148,9 @@ accept. Risk tolerance defines acceptable variation around objectives.
 Organizations may adopt structured frameworks to guide security posture,
 such as:
 
--   Risk management frameworks
--   Control catalogs
--   Maturity models
+- Risk management frameworks
+- Control catalogs
+- Maturity models
 
 Framework adoption standardizes processes and facilitates audit
 readiness.
@@ -142,8 +160,10 @@ readiness.
 Compliance ensures adherence to regulatory obligations such as data
 protection laws and industry standards.
 
-Noncompliance may result in: - Financial penalties - Legal liability -
-Reputational damage
+Noncompliance may result in:
+- Financial penalties 
+- Legal liability 
+- Reputational damage
 
 ------------------------------------------------------------------------
 
