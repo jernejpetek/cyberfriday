@@ -1,1 +1,9 @@
-
+[
+  {
+  "title": "Deep Foundations of Cybersecurity: Core Principles Explained",
+  "date": "2026-02-24",
+  "tags": ["cybersecurity", "security fundamentals", "Security+", "identity", "cryptography", "network security"],
+  "summary": "A deep-dive exploration of core cybersecurity principles including confidentiality, integrity, availability, identity management, cryptography, and foundational attack mechanics. Designed to reinforce understanding beyond exam memorization.",
+  "url": "read.html?md=notes/Deep_Foundations_of_Cybersecurity_Core_Principles.md"
+} 
+] 
