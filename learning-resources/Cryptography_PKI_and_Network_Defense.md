@@ -19,10 +19,10 @@ Symmetric encryption operates using substitution and permutation
 principles. Modern symmetric algorithms such as AES rely on iterative
 rounds of transformation. Each round typically includes:
 
--   Substitution (non-linear transformation)
--   Permutation (rearrangement of bits)
--   Mixing operations
--   Key addition
+- Substitution (non-linear transformation)
+- Permutation (rearrangement of bits)
+- Mixing operations
+- Key addition
 
 AES uses fixed block sizes of 128 bits and variable key lengths (128,
 192, 256 bits). The number of transformation rounds depends on the key
@@ -34,9 +34,9 @@ implementation (avoiding side-channel leakage)
 
 Modes of operation define how block ciphers process larger data streams:
 
--   ECB (Electronic Codebook) -- insecure due to pattern leakage
--   CBC (Cipher Block Chaining) -- introduces chaining dependency
--   GCM (Galois/Counter Mode) -- provides authenticated encryption
+- ECB (Electronic Codebook) -- insecure due to pattern leakage
+- CBC (Cipher Block Chaining) -- introduces chaining dependency
+- GCM (Galois/Counter Mode) -- provides authenticated encryption
 
 Authenticated encryption ensures both confidentiality and integrity in
 one operation.
@@ -53,10 +53,10 @@ confidential.
 
 Digital signatures operate as follows:
 
-1.  A hash is generated from data.
-2.  The hash is encrypted with the private key.
-3.  The recipient decrypts the signature using the public key.
-4.  The recipient compares the decrypted hash to a newly generated hash
+1. A hash is generated from data.
+2. The hash is encrypted with the private key.
+3. The recipient decrypts the signature using the public key.
+4. The recipient compares the decrypted hash to a newly generated hash
     of the received data.
 
 If they match, integrity and authenticity are confirmed.
@@ -88,12 +88,12 @@ PKI establishes trust relationships in distributed systems.
 A digital certificate binds a public key to an identity. The certificate
 lifecycle includes:
 
--   Key pair generation
--   Certificate Signing Request (CSR)
--   Validation by Certificate Authority (CA)
--   Certificate issuance
--   Revocation (CRL or OCSP)
--   Expiration and renewal
+- Key pair generation
+- Certificate Signing Request (CSR)
+- Validation by Certificate Authority (CA)
+- Certificate issuance
+- Revocation (CRL or OCSP)
+- Expiration and renewal
 
 Trust chains begin at a root CA. Intermediate CAs extend trust hierarchy
 while protecting the root key.
