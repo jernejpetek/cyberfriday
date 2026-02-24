@@ -2,6 +2,9 @@
 # Enterprise Authentication, Zero Trust, and Modern Security Architecture
 
 ------------------------------------------------------------------------
+This article continues the Learning Resources series by examining how modern enterprise security architectures operate beyond traditional perimeter defenses. It explores authentication internals such as Kerberos ticket exchanges, the structural principles behind Zero Trust design, and the realities of cloud shared-responsibility models. The focus shifts from isolated controls to architectural thinking—how identity, segmentation, cryptography, and monitoring interact to form cohesive defense strategies.
+
+These notes were prepared by me as part of my structured study process using officially purchased learning materials. They reflect my own organization and interpretation of the concepts. They are not intended to replace official certification guides or serve as a standalone exam-preparation resource. Instead, they are designed to reinforce understanding and provide deeper technical clarity alongside primary study materials.
 
 # Chapter 12: Kerberos and Enterprise Authentication Internals
 
