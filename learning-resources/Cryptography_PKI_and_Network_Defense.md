@@ -254,8 +254,11 @@ Cybersecurity insurance represents risk transfer.
 
 ## Business Impact Analysis (BIA)
 
-BIA identifies: - Critical systems - Recovery Time Objective (RTO) -
-Recovery Point Objective (RPO) - Financial and operational impact
+BIA identifies: 
+- Critical systems
+- Recovery Time Objective (RTO)
+- Recovery Point Objective (RPO)
+- Financial and operational impact
 
 Testing continuity plans ensures readiness.
 
