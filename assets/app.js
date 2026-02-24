@@ -3,7 +3,7 @@ const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
 function escapeHtml(str = "") {
   return str.replace(/[&<>"']/g, m => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+    "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"
   }[m]));
 }
 function sortByDateDesc(a,b){ return (b.date||"").localeCompare(a.date||""); }
@@ -15,7 +15,7 @@ function initTheme(){
   const btn = $("#themeBtn");
   const setIcon = () => {
     const theme = document.documentElement.dataset.theme || "dark";
-    btn.querySelector(".icon").textContent = theme === "light" ? "☼" : "☾";
+    if (btn) btn.querySelector(".icon").textContent = theme === "light" ? "☼" : "☾";
   };
   setIcon();
 
@@ -31,8 +31,8 @@ function initTheme(){
 function initMenu(){
   const modal = $("#menu");
   const btn = $("#menuBtn");
-  const open = () => { modal.hidden = false; };
-  const close = () => { modal.hidden = true; };
+  const open = () => { if (modal) modal.hidden = false; };
+  const close = () => { if (modal) modal.hidden = true; };
 
   btn?.addEventListener("click", open);
   modal?.addEventListener("click", (e) => {
@@ -58,7 +58,7 @@ async function loadJson(path){
   return await res.json();
 }
 
-/* Home: stats only */
+/* Home */
 async function bootHome(){
   try{
     const [w,p,n] = await Promise.all([
@@ -74,33 +74,24 @@ async function bootHome(){
   }
 }
 
-/* Category renderers */
+/* Shared renderers */
 function renderCardList(items){
   return items.map(x => `
     <a class="cardlink reveal" href="${escapeHtml(x.url||"#")}" ${x.external ? 'target="_blank" rel="noreferrer"' : ''}>
       <div class="meta">
-        ${x.platform ? `<span class="tag">${escapeHtml(x.platform)}</span>` : (x.type ? `<span class="tag">${escapeHtml(x.type)}</span>` : `<span class="tag">Item</span>`)}
+        ${x.platform ? `<span class="tag">${escapeHtml(x.platform)}</span>` :
+          (x.type ? `<span class="tag">${escapeHtml(x.type)}</span>` :
+          `<span class="tag">Item</span>`)}
         ${x.date ? `<span>•</span><span>${escapeHtml(x.date)}</span>` : ``}
         ${x.stack ? `<span>•</span><span class="muted2">${escapeHtml(x.stack)}</span>` : ``}
       </div>
       <h3>${escapeHtml(x.title||"Untitled")}</h3>
       ${x.summary ? `<p>${escapeHtml(x.summary)}</p>` : ``}
-      ${(x.tags && x.tags.length) ? `<div class="chips">${x.tags.slice(0,10).map(t=>`<span class="tag">#${escapeHtml(t)}</span>`).join("")}</div>` : ``}
+      ${(x.tags && x.tags.length) ?
+        `<div class="chips">${x.tags.slice(0,10).map(t=>`<span class="tag">#${escapeHtml(t)}</span>`).join("")}</div>`
+        : ``}
     </a>
   `).join("");
-}
-
-function groupByPlatform(items){
-  const order = ["HTB","THM","WASA","CTF","Other"];
-  const groups = {};
-  items.forEach(x => {
-    const k = x.platform || "Other";
-    if (!groups[k]) groups[k] = [];
-    groups[k].push(x);
-  });
-  // ensure stable order
-  const keys = [...new Set([...order.filter(k=>groups[k]), ...Object.keys(groups).filter(k=>!order.includes(k))])];
-  return keys.map(k => ({ key:k, items: groups[k].slice().sort(sortByDateDesc) }));
 }
 
 function applySearch(items, q){
@@ -112,6 +103,7 @@ function applySearch(items, q){
   });
 }
 
+/* Writeups */
 async function bootWriteups(){
   const area = $("#contentArea");
   const empty = $("#empty");
@@ -120,33 +112,22 @@ async function bootWriteups(){
     all = await loadJson("content/writeups.json");
   }catch(err){
     console.error(err);
-    area.innerHTML = `<div class="empty">Couldn’t load writeups.json (check paths).</div>`;
+    area.innerHTML = `<div class="empty">Couldn’t load writeups.json</div>`;
     return;
   }
 
   const render = (q) => {
-    const filtered = applySearch(all, q);
-    const grouped = groupByPlatform(filtered);
-    area.innerHTML = grouped.map(g => `
-      <div class="group">
-        <div class="group__head">
-          <h2 class="group__title">${escapeHtml(g.key)}</h2>
-          <div class="group__count">${g.items.length} item${g.items.length===1?"":"s"}</div>
-        </div>
-        <div class="grid grid--cards">
-          ${renderCardList(g.items)}
-        </div>
-      </div>
-    `).join("");
-
+    const filtered = applySearch(all, q).slice().sort(sortByDateDesc);
+    area.innerHTML = `<div class="grid grid--cards">${renderCardList(filtered)}</div>`;
     initReveal(area);
     empty.hidden = filtered.length !== 0;
   };
 
   render("");
-  $("#search")?.addEventListener("input", (e) => render(e.target.value));
+  $("#search")?.addEventListener("input", e => render(e.target.value));
 }
 
+/* Projects */
 async function bootProjects(){
   const area = $("#contentArea");
   const empty = $("#empty");
@@ -155,19 +136,22 @@ async function bootProjects(){
     all = await loadJson("content/projects.json");
   }catch(err){
     console.error(err);
-    area.innerHTML = `<div class="empty">Couldn’t load projects.json (check paths).</div>`;
+    area.innerHTML = `<div class="empty">Couldn’t load projects.json</div>`;
     return;
   }
+
   const render = (q) => {
     const filtered = applySearch(all, q).slice().sort(sortByDateDesc);
     area.innerHTML = `<div class="grid grid--cards">${renderCardList(filtered)}</div>`;
     initReveal(area);
     empty.hidden = filtered.length !== 0;
   };
+
   render("");
-  $("#search")?.addEventListener("input", (e) => render(e.target.value));
+  $("#search")?.addEventListener("input", e => render(e.target.value));
 }
 
+/* Notes */
 async function bootNotes(){
   const area = $("#contentArea");
   const empty = $("#empty");
@@ -176,17 +160,43 @@ async function bootNotes(){
     all = await loadJson("content/notes.json");
   }catch(err){
     console.error(err);
-    area.innerHTML = `<div class="empty">Couldn’t load notes.json (check paths).</div>`;
+    area.innerHTML = `<div class="empty">Couldn’t load notes.json</div>`;
     return;
   }
+
   const render = (q) => {
     const filtered = applySearch(all, q).slice().sort(sortByDateDesc);
-    area.innerHTML = `<div class="grid grid--list">${renderCardList(filtered)}</div>`;
+    area.innerHTML = `<div class="grid grid--cards">${renderCardList(filtered)}</div>`;
     initReveal(area);
     empty.hidden = filtered.length !== 0;
   };
+
   render("");
-  $("#search")?.addEventListener("input", (e) => render(e.target.value));
+  $("#search")?.addEventListener("input", e => render(e.target.value));
+}
+
+/* Learning Resources */
+async function bootLearningResources(){
+  const area = $("#contentArea");
+  const empty = $("#empty");
+  let all = [];
+  try{
+    all = await loadJson("content/learning-resources.json");
+  }catch(err){
+    console.error(err);
+    area.innerHTML = `<div class="empty">Couldn’t load learning-resources.json</div>`;
+    return;
+  }
+
+  const render = (q) => {
+    const filtered = applySearch(all, q).slice().sort(sortByDateDesc);
+    area.innerHTML = `<div class="grid grid--cards">${renderCardList(filtered)}</div>`;
+    initReveal(area);
+    empty.hidden = filtered.length !== 0;
+  };
+
+  render("");
+  $("#search")?.addEventListener("input", e => render(e.target.value));
 }
 
 /* Boot */
@@ -201,4 +211,5 @@ async function bootNotes(){
   if (page === "writeups") await bootWriteups();
   if (page === "projects") await bootProjects();
   if (page === "notes") await bootNotes();
+  if (page === "learning-resources") await bootLearningResources();
 })();
