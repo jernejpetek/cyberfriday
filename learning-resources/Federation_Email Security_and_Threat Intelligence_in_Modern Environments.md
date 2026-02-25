@@ -120,8 +120,11 @@ connectivity.
 
 ## Mobile Device Management (MDM)
 
-MDM enforces policies such as: - Remote wipe - Device encryption -
-Application restrictions - Mandatory PIN enforcement
+MDM enforces policies such as: 
+- Remote wipe
+- Device encryption
+- Application restrictions
+- Mandatory PIN enforcement
 
 ## Mobile Threats
 
