@@ -38,5 +38,13 @@
   "tags": ["cybersecurity", "federation", "email security", "threat intelligence", "IoT", "mobile security"],
   "summary": "An in-depth look at identity federation, secure email controls, threat intelligence lifecycle, mobile security, IoT exposure, and supply chain risk in modern enterprise environments.",
   "url": "read.html?md=learning-resources/Federation_Email Security_and_Threat Intelligence_in_Modern Environments.md"
+},
+{
+  "title": "Virtualization, Containers, Cryptographic Attacks, and Enterprise Logging",
+  "date": "2026-02-25",
+  "type": "Security+",
+  "tags": ["cybersecurity", "virtualization", "containers", "cryptographic attacks", "logging", "identity management"],
+  "summary": "A technical exploration of deep packet inspection, virtualization risks, container security, cryptographic attack theory, identity lifecycle management, and enterprise logging architecture.",
+  "url": "read.html?md=learning-resources/Advanced Networking_Virtualization_Cryptographic Attacks_Identity Lifecycle_and Enterprise Logging.md"
 }
 ] 
