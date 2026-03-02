@@ -46,5 +46,53 @@
   "tags": ["cybersecurity", "virtualization", "containers", "cryptographic attacks", "logging", "identity management"],
   "summary": "A technical exploration of deep packet inspection, virtualization risks, container security, cryptographic attack theory, identity lifecycle management, and enterprise logging architecture.",
   "url": "read.html?md=learning-resources/Advanced Networking_Virtualization_Cryptographic Attacks_Identity Lifecycle_and Enterprise Logging.md"
+},
+{
+  "title": "Exploitation Theory, DNS Security, and Cloud Attack Paths",
+  "date": "2026-03-02",
+  "type": "Security+",
+  "tags": ["cybersecurity", "exploitation", "DNSSEC", "PKI", "cloud security", "wireless security"],
+  "summary": "An exploration of memory exploitation, DNS security, PKI deployment, wireless handshake protections, and cloud-native attack paths with defensive architectural considerations.",
+  "url": "read.html?md=learning-resources/7Exploitation_Theory.md"
+},
+{
+  "title": "Operating System Internals and Active Directory Attack Defense",
+  "date": "2026-03-02",
+  "type": "Security+",
+  "tags": ["cybersecurity", "Active Directory", "Windows security", "Linux security", "API security", "penetration testing"],
+  "summary": "A detailed examination of OS internals, Active Directory attacks, API security risks, malware evasion techniques, and structured penetration testing methodology.",
+  "url": "read.html?md=learning-resources/8Operating_System_Internals.md"
+},
+{
+  "title": "Linux Security, Cloud IAM Exploitation, and Incident Simulation",
+  "date": "2026-03-02",
+  "type": "Security+",
+  "tags": ["cybersecurity", "Linux security", "cloud IAM", "incident response", "email attacks", "network design"],
+  "summary": "An applied exploration of Linux security, cloud IAM exploitation paths, secure network architecture, email attack chains, and structured incident response simulation.",
+  "url": "read.html?md=learning-resources/9Linux_Cloud_Simulation.md"
+},
+{
+  "title": "Detection Engineering and Secure Network Design Patterns",
+  "date": "2026-03-02",
+  "type": "Security+",
+  "tags": ["cybersecurity", "detection engineering", "network segmentation", "DNS security", "architecture"],
+  "summary": "A focused exploration of detection engineering principles, segmentation strategies, and integrated network defense design patterns.",
+  "url": "read.html?md=learning-resources/Security_Plus_SY0-701_Textbook_Part10.md"
+},
+{
+  "title": "Security Program Strategy, Threat Modeling, and Metrics",
+  "date": "2026-03-02",
+  "type": "Security+",
+  "tags": ["cybersecurity", "security program", "threat modeling", "risk strategy", "KPIs"],
+  "summary": "An examination of security program lifecycle development, structured threat modeling, and measurable security metrics for long-term resilience.",
+  "url": "read.html?md=learning-resources/Security_Plus_SY0-701_Textbook_Part11.md"
+},
+{
+  "title": "Integrated Security Architecture and Continuous Improvement",
+  "date": "2026-03-02",
+  "type": "Security+",
+  "tags": ["cybersecurity", "security architecture", "resilience", "governance", "continuous improvement"],
+  "summary": "A consolidated exploration of integrated security architecture, control interdependencies, and operational maturity for long-term organizational resilience.",
+  "url": "read.html?md=learning-resources/Security_Plus_SY0-701_Textbook_Part12.md"
 }
 ] 
