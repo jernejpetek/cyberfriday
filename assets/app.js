@@ -2,12 +2,12 @@ const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
 function escapeHtml(str = "") {
-  return str.replace(/[&<>"']/g, (m) => ({
+  return str.replace(/[&<>"']/g, m => ({
     "&": "&amp;",
     "<": "&lt;",
     ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#039;",
+    "\"": "&quot;",
+    "'": "&#039;"
   }[m]));
 }
 
@@ -24,6 +24,7 @@ function initTheme() {
     const theme = document.documentElement.dataset.theme || "dark";
     if (btn) btn.querySelector(".icon").textContent = theme === "light" ? "☼" : "☾";
   };
+
   setIcon();
 
   btn?.addEventListener("click", () => {
@@ -38,14 +39,17 @@ function initTheme() {
 function initMenu() {
   const modal = $("#menu");
   const btn = $("#menuBtn");
+
   const open = () => { if (modal) modal.hidden = false; };
   const close = () => { if (modal) modal.hidden = true; };
 
   btn?.addEventListener("click", open);
+
   modal?.addEventListener("click", (e) => {
     const t = e.target;
     if (t?.dataset?.close === "true") close();
   });
+
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && modal && !modal.hidden) close();
   });
@@ -53,10 +57,14 @@ function initMenu() {
 
 function initReveal(scope = document) {
   const els = $$(".reveal", scope);
+
   const io = new IntersectionObserver((entries) => {
-    entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("in"); });
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add("in");
+    });
   }, { threshold: 0.12 });
-  els.forEach((el) => io.observe(el));
+
+  els.forEach(el => io.observe(el));
 }
 
 async function loadJson(path) {
@@ -68,19 +76,15 @@ async function loadJson(path) {
 /* Home */
 async function bootHome() {
   try {
-    const [w, p, n, lr] = await Promise.all([
+    const [w, p, n] = await Promise.all([
       loadJson("content/writeups.json"),
       loadJson("content/projects.json"),
       loadJson("content/notes.json"),
-      loadJson("content/learning-resources.json"),
     ]);
 
     $("#statWriteups").textContent = String(w.length);
     $("#statProjects").textContent = String(p.length);
     $("#statNotes").textContent = String(n.length);
-
-    // Learning resources stat (requires an element with id="statLearning" on the home page)
-    $("#statLearning")?.textContent = String(lr.length);
   } catch (err) {
     console.error(err);
   }
@@ -88,19 +92,20 @@ async function bootHome() {
 
 /* Shared renderers */
 function renderCardList(items) {
-  return items.map((x) => `
+  return items.map(x => `
     <a class="cardlink reveal" href="${escapeHtml(x.url || "#")}" ${x.external ? 'target="_blank" rel="noreferrer"' : ''}>
       <div class="meta">
         ${x.platform ? `<span class="tag">${escapeHtml(x.platform)}</span>` :
           (x.type ? `<span class="tag">${escapeHtml(x.type)}</span>` :
-          `<span class="tag">Item</span>`)}
+            `<span class="tag">Item</span>`)}
         ${x.date ? `<span>•</span><span>${escapeHtml(x.date)}</span>` : ``}
         ${x.stack ? `<span>•</span><span class="muted2">${escapeHtml(x.stack)}</span>` : ``}
       </div>
       <h3>${escapeHtml(x.title || "Untitled")}</h3>
       ${x.summary ? `<p>${escapeHtml(x.summary)}</p>` : ``}
       ${(x.tags && x.tags.length) ?
-        `<div class="chips">${x.tags.slice(0, 10).map(t => `<span class="tag">#${escapeHtml(t)}</span>`).join("")}</div>`
+        `<div class="chips">${x.tags.slice(0, 10).map(t =>
+          `<span class="tag">#${escapeHtml(t)}</span>`).join("")}</div>`
         : ``}
     </a>
   `).join("");
@@ -109,7 +114,8 @@ function renderCardList(items) {
 function applySearch(items, q) {
   const query = (q || "").trim().toLowerCase();
   if (!query) return items;
-  return items.filter((x) => {
+
+  return items.filter(x => {
     const hay = `${x.title || ""} ${(x.tags || []).join(" ")} ${x.summary || ""} ${x.platform || ""} ${x.stack || ""}`.toLowerCase();
     return hay.includes(query);
   });
@@ -120,6 +126,7 @@ async function bootWriteups() {
   const area = $("#contentArea");
   const empty = $("#empty");
   let all = [];
+
   try {
     all = await loadJson("content/writeups.json");
   } catch (err) {
@@ -136,7 +143,7 @@ async function bootWriteups() {
   };
 
   render("");
-  $("#search")?.addEventListener("input", (e) => render(e.target.value));
+  $("#search")?.addEventListener("input", e => render(e.target.value));
 }
 
 /* Projects */
@@ -144,6 +151,7 @@ async function bootProjects() {
   const area = $("#contentArea");
   const empty = $("#empty");
   let all = [];
+
   try {
     all = await loadJson("content/projects.json");
   } catch (err) {
@@ -160,7 +168,7 @@ async function bootProjects() {
   };
 
   render("");
-  $("#search")?.addEventListener("input", (e) => render(e.target.value));
+  $("#search")?.addEventListener("input", e => render(e.target.value));
 }
 
 /* Notes */
@@ -168,6 +176,7 @@ async function bootNotes() {
   const area = $("#contentArea");
   const empty = $("#empty");
   let all = [];
+
   try {
     all = await loadJson("content/notes.json");
   } catch (err) {
@@ -184,7 +193,7 @@ async function bootNotes() {
   };
 
   render("");
-  $("#search")?.addEventListener("input", (e) => render(e.target.value));
+  $("#search")?.addEventListener("input", e => render(e.target.value));
 }
 
 /* Learning Resources */
@@ -192,6 +201,7 @@ async function bootLearningResources() {
   const area = $("#contentArea");
   const empty = $("#empty");
   let all = [];
+
   try {
     all = await loadJson("content/learning-resources.json");
   } catch (err) {
@@ -208,10 +218,10 @@ async function bootLearningResources() {
   };
 
   render("");
-  $("#search")?.addEventListener("input", (e) => render(e.target.value));
+  $("#search")?.addEventListener("input", e => render(e.target.value));
 }
 
-/* Read page: set correct Back button */
+/* Read page */
 function bootRead() {
   const backBtn = $("#backBtn");
   if (!backBtn) return;
@@ -220,13 +230,11 @@ function bootRead() {
   const mdPath = params.get("md");
   const srcUrl = params.get("src");
 
-  // External markdown -> hide back button
   if (!mdPath && srcUrl) {
     backBtn.hidden = true;
     return;
   }
 
-  // No target -> hide
   if (!mdPath) {
     backBtn.hidden = true;
     return;
@@ -268,6 +276,7 @@ function bootRead() {
   initReveal(document);
 
   const page = document.body.dataset.page;
+
   if (page === "home") await bootHome();
   if (page === "writeups") await bootWriteups();
   if (page === "projects") await bootProjects();
