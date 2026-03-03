@@ -2,14 +2,20 @@ const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
 function escapeHtml(str = "") {
-  return str.replace(/[&<>"']/g, m => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"
+  return str.replace(/[&<>"']/g, (m) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "\"": "&quot;",
+    "'": "&#039;",
   }[m]));
 }
 
-function sortByDateDesc(a,b){ return (b.date||"").localeCompare(a.date||""); }
+function sortByDateDesc(a, b) {
+  return (b.date || "").localeCompare(a.date || "");
+}
 
-function initTheme(){
+function initTheme() {
   const stored = localStorage.getItem("theme");
   if (stored) document.documentElement.dataset.theme = stored;
 
@@ -29,7 +35,7 @@ function initTheme(){
   });
 }
 
-function initMenu(){
+function initMenu() {
   const modal = $("#menu");
   const btn = $("#menuBtn");
   const open = () => { if (modal) modal.hidden = false; };
@@ -45,40 +51,46 @@ function initMenu(){
   });
 }
 
-function initReveal(scope=document){
+function initReveal(scope = document) {
   const els = $$(".reveal", scope);
   const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("in"); });
+    entries.forEach((e) => {
+      if (e.isIntersecting) e.target.classList.add("in");
+    });
   }, { threshold: 0.12 });
-  els.forEach(el => io.observe(el));
+
+  els.forEach((el) => io.observe(el));
 }
 
-async function loadJson(path){
+async function loadJson(path) {
   const res = await fetch(path, { cache: "no-store" });
   if (!res.ok) throw new Error(`Failed to load ${path}`);
   return await res.json();
 }
 
 /* Home */
-async function bootHome(){
-  try{
-    const [w,p,n] = await Promise.all([
+async function bootHome() {
+  try {
+    const [w, p, n, lr] = await Promise.all([
       loadJson("content/writeups.json"),
       loadJson("content/projects.json"),
       loadJson("content/notes.json"),
+      loadJson("content/learning-resources.json"),
     ]);
-    $("#statWriteups").textContent = String(w.length);
-    $("#statProjects").textContent = String(p.length);
-    $("#statNotes").textContent = String(n.length);
-  }catch(err){
+
+    $("#statWriteups")?.textContent = String(w.length);
+    $("#statProjects")?.textContent = String(p.length);
+    $("#statNotes")?.textContent = String(n.length);
+    $("#statLearning")?.textContent = String(lr.length);
+  } catch (err) {
     console.error(err);
   }
 }
 
 /* Shared renderers */
-function renderCardList(items){
-  return items.map(x => `
-    <a class="cardlink reveal" href="${escapeHtml(x.url||"#")}" ${x.external ? 'target="_blank" rel="noreferrer"' : ''}>
+function renderCardList(items) {
+  return items.map((x) => `
+    <a class="cardlink reveal" href="${escapeHtml(x.url || "#")}" ${x.external ? 'target="_blank" rel="noreferrer"' : ""}>
       <div class="meta">
         ${x.platform ? `<span class="tag">${escapeHtml(x.platform)}</span>` :
           (x.type ? `<span class="tag">${escapeHtml(x.type)}</span>` :
@@ -86,32 +98,34 @@ function renderCardList(items){
         ${x.date ? `<span>•</span><span>${escapeHtml(x.date)}</span>` : ``}
         ${x.stack ? `<span>•</span><span class="muted2">${escapeHtml(x.stack)}</span>` : ``}
       </div>
-      <h3>${escapeHtml(x.title||"Untitled")}</h3>
+      <h3>${escapeHtml(x.title || "Untitled")}</h3>
       ${x.summary ? `<p>${escapeHtml(x.summary)}</p>` : ``}
       ${(x.tags && x.tags.length) ?
-        `<div class="chips">${x.tags.slice(0,10).map(t=>`<span class="tag">#${escapeHtml(t)}</span>`).join("")}</div>`
+        `<div class="chips">${x.tags.slice(0, 10).map((t) => `<span class="tag">#${escapeHtml(t)}</span>`).join("")}</div>`
         : ``}
     </a>
   `).join("");
 }
 
-function applySearch(items, q){
-  const query = (q||"").trim().toLowerCase();
+function applySearch(items, q) {
+  const query = (q || "").trim().toLowerCase();
   if (!query) return items;
-  return items.filter(x => {
-    const hay = `${x.title||""} ${(x.tags||[]).join(" ")} ${x.summary||""} ${x.platform||""} ${x.stack||""}`.toLowerCase();
+
+  return items.filter((x) => {
+    const hay = `${x.title || ""} ${(x.tags || []).join(" ")} ${x.summary || ""} ${x.platform || ""} ${x.stack || ""}`.toLowerCase();
     return hay.includes(query);
   });
 }
 
 /* Writeups */
-async function bootWriteups(){
+async function bootWriteups() {
   const area = $("#contentArea");
   const empty = $("#empty");
   let all = [];
-  try{
+
+  try {
     all = await loadJson("content/writeups.json");
-  }catch(err){
+  } catch (err) {
     console.error(err);
     if (area) area.innerHTML = `<div class="empty">Couldn’t load writeups.json</div>`;
     return;
@@ -125,17 +139,18 @@ async function bootWriteups(){
   };
 
   render("");
-  $("#search")?.addEventListener("input", e => render(e.target.value));
+  $("#search")?.addEventListener("input", (e) => render(e.target.value));
 }
 
 /* Projects */
-async function bootProjects(){
+async function bootProjects() {
   const area = $("#contentArea");
   const empty = $("#empty");
   let all = [];
-  try{
+
+  try {
     all = await loadJson("content/projects.json");
-  }catch(err){
+  } catch (err) {
     console.error(err);
     if (area) area.innerHTML = `<div class="empty">Couldn’t load projects.json</div>`;
     return;
@@ -149,17 +164,18 @@ async function bootProjects(){
   };
 
   render("");
-  $("#search")?.addEventListener("input", e => render(e.target.value));
+  $("#search")?.addEventListener("input", (e) => render(e.target.value));
 }
 
 /* Notes */
-async function bootNotes(){
+async function bootNotes() {
   const area = $("#contentArea");
   const empty = $("#empty");
   let all = [];
-  try{
+
+  try {
     all = await loadJson("content/notes.json");
-  }catch(err){
+  } catch (err) {
     console.error(err);
     if (area) area.innerHTML = `<div class="empty">Couldn’t load notes.json</div>`;
     return;
@@ -173,17 +189,18 @@ async function bootNotes(){
   };
 
   render("");
-  $("#search")?.addEventListener("input", e => render(e.target.value));
+  $("#search")?.addEventListener("input", (e) => render(e.target.value));
 }
 
 /* Learning Resources */
-async function bootLearningResources(){
+async function bootLearningResources() {
   const area = $("#contentArea");
   const empty = $("#empty");
   let all = [];
-  try{
+
+  try {
     all = await loadJson("content/learning-resources.json");
-  }catch(err){
+  } catch (err) {
     console.error(err);
     if (area) area.innerHTML = `<div class="empty">Couldn’t load learning-resources.json</div>`;
     return;
@@ -197,11 +214,11 @@ async function bootLearningResources(){
   };
 
   render("");
-  $("#search")?.addEventListener("input", e => render(e.target.value));
+  $("#search")?.addEventListener("input", (e) => render(e.target.value));
 }
 
 /* Read page: set correct Back button */
-function bootRead(){
+function bootRead() {
   const backBtn = $("#backBtn");
   if (!backBtn) return;
 
@@ -248,7 +265,7 @@ function bootRead(){
 }
 
 /* Boot */
-(async function(){
+(async function () {
   const yearEl = $("#year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
