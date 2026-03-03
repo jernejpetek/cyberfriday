@@ -74,18 +74,22 @@ async function loadJson(path) {
 }
 
 /* Home */
-async function bootHome() {
-  try {
-    const [w, p, n] = await Promise.all([
+async function bootHome(){
+  try{
+    const [w,p,n,lr] = await Promise.all([
       loadJson("content/writeups.json"),
       loadJson("content/projects.json"),
       loadJson("content/notes.json"),
+      loadJson("content/learning-resources.json"),
     ]);
 
     $("#statWriteups").textContent = String(w.length);
     $("#statProjects").textContent = String(p.length);
     $("#statNotes").textContent = String(n.length);
-  } catch (err) {
+
+    const el = $("#statLearning");
+    if (el) el.textContent = String(lr.length);
+  }catch(err){
     console.error(err);
   }
 }
