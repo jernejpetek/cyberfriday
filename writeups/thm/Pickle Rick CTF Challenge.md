@@ -17,14 +17,14 @@ nmap -sC -sV 10.113.147.216
 ```
 
 The scan reveals two services running on the target machine:
-![[PickleRick1.png]]
+![Nmap scan results](images/PickleRick1.png)
 
 Accessing `http://10.113.147.216` on **port 80** reveals the following webpage:
-![[PickleRick2.png]]
+![Webpage](images/PickleRick2.png)
 
 If we view the page source, a hidden username can be found:
 
-![[Pickle Rick3.png]]
+![Webpage source](images/Pickle Rick3.png)
 
 Username: `R1ckRul3s`
 
