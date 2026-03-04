@@ -38,6 +38,13 @@
   "tags": ["guide", "scanner", "docker"],
   "summary": "Testing for CVE-2025-55182 using the React2Shell scanner.",
   "url": "read.html?md=writeups/guides/react2shell-testing.md"
-  }
-
+  },
+  {
+  "title": "THM — Pickle Rick Challenge",
+  "platform": "TryHackMe",
+  "date": "2026-03-04",
+  "tags": ["writeup", "thm", "web", "web-exploitation", "privilege-escalation"],
+  "summary": "Beginner-friendly TryHackMe room focused on web enumeration, command execution, and basic privilege escalation.",
+  "url": "read.html?md=writeups/thm/pickle-rick.md"
+}
 ]
