@@ -24,7 +24,7 @@ Accessing `http://10.113.147.216` on **port 80** reveals the following webpage:
 
 If we view the page source, a hidden username can be found:
 
-![Webpage source](images/Pickle Rick3.png)
+![Webpage source](images/PickleRick3.png)
 
 Username: `R1ckRul3s`
 
@@ -35,22 +35,22 @@ The next logical step is to perform **directory enumeration** to look for hidden
 gobuster dir -u http://10.113.147.216 -w /usr/share/wordlists/dirb/common.txt
 ```
 
-![[Pickle Rick4.png]]
+![Gobuster1](images/PickleRick4.png)
 We can now try to access the discovered paths, starting with the ones that returned a **200 status code**.
 
 First, let's take a look at `/robots.txt`:
 
-![[PickleRick5.png]]
+![robots](images/PickleRick5.png)
 
 At this point, I thought that `Wubbalubbadubdub` might be the password for Rick's account, so I tried using it for `ssh`
 
-![[PickleRick6.png]]
+![Pickle Rick 6](images/PickleRick6.png)
 
 Unfortunately, that was a bit too early. Since we still don't have a login portal to use it on, it makes sense to continue exploring the other discovered directories.
 
 Navigating to the `/assets` directory reveals the following files:
 
-![[Pickle Rick7.png]]
+![Pickle Rick 7](images/PickleRick7.png)
 
 After checking all the items listed here and not finding anything particularly useful, I decided to run another Gobuster scan with a slightly different approach.
 
@@ -60,18 +60,18 @@ This time, I explicitly searched for common file extensions such as **php, html,
 gobuster dir -u http://10.113.147.216 -w /usr/share/wordlists/dirb/common.txt -x php,txt,html,css,js,pdf
 ```
 
-![[Pickle Rick8.png]]
+![Pickle Rick 8](images/PickleRick8.png)
 
 Bingo! The scan reveals what we were looking for — a login portal at `/login.php`.
 
-![[Pickle Rick9.png]]
+![Pickle Rick 9](images/PickleRick9.png)
 
 Let's try logging in using the credentials we discovered earlier:
 
 Username: `R1ckRul3s`  
 Password: `Wubbalubbadubdub`
 
-![[Pickle Rick10.png]]
+![Pickle Rick 10](images/PickleRick10.png)
 The login is successful and the **command panel** becomes available. However, access to the other tabs in the portal appears to be restricted.
 
 Inside the command panel, I first tried running the `pwd` command to see what kind of commands were supported. It turns out that the panel allows the execution of **Linux commands**, which means we can start exploring the system directly.
@@ -90,7 +90,7 @@ Next, I listed all files in the current directory, including hidden ones:
 ls -a
 ```
 
-![[Pickle Rick11.png]]
+![Pickle Rick 11](images/PickleRick11.png)
 
 While listing the files in the directory, I noticed a file named `Sup3rS3cretPickl3Ingred.txt`. Since it looked important, I attempted to read its contents using the `cat` command.
 
@@ -100,7 +100,7 @@ cat Sup3rS3cretPickl3Ingred.txt
 
 The `cat` command turned out to be disabled by none other than Rick himself.
 
-![[Pickle Rick12.png]]
+![Pickle Rick 12](images/PickleRick12.png)
 
 At this point, I needed to find alternatives to the `cat` command that could still display the contents of a file. Some possible options include:
 ```bash
@@ -119,7 +119,7 @@ tac Sup3rS3cretPickl3Ingred.txt
 
 Success!
 
-![[Pickle Rick13.png]]
+![Pickle Rick 13](images/PickleRick13.png)
 
 This reveals the first ingredient, which also answers the first question:
 ```
@@ -129,7 +129,7 @@ mr. meeseek hair
 Great, we now have the first answer.  
 I revisited the earlier `ls -a` output to check if anything else looked interesting. 
 
-![[Pickle Rick11.png]]
+![Pickle Rick 11](images/PickleRick11.png)
 
 The only file that stands out is `clue.txt`, so let's try reading it the same way we did with `Sup3rS3cretPickl3Ingred.txt`, using the `tac` command.
 
@@ -137,7 +137,7 @@ The only file that stands out is `clue.txt`, so let's try reading it the same wa
 tac clue.txt
 ```
 
-![[Pickle Rick14.png]]
+![Pickle Rick 14](images/PickleRick14.png)
 
 The message suggests looking around the file system. I first tried using commands like `cd ..` and `cd ../..` to move to other directories, but those attempts did not work.
 
@@ -147,7 +147,7 @@ Since changing directories was not possible, I tried another approach by checkin
 ls /home
 ```
 
-![[Pickle Rick15.png]]
+![Pickle Rick 15](images/PickleRick15.png)
 
 Next, I wanted to take a closer look inside Rick's home directory.  
   
@@ -173,7 +173,7 @@ However, this command did not work. I spent some time trying to figure out why i
 
 After looking through some documentation and not finding a clear answer, I decided to ask ChatGPT whether my command was correct. The response pointed out something interesting:
 
-![[Pickle Rick16.png]]
+![Pickle Rick 16](images/PickleRick16.png)
 
 I was not aware of this before, so it was interesting to learn. Let's test it:
 ```bash
@@ -182,7 +182,7 @@ tac /home/rick/second\ ingredients
 
 And sure enough — it worked. This reveals the second ingredient:
 
-![[Pickle Rick17.png]]
+![Pickle Rick 17](images/PickleRick17.png)
 
 All that remains now is the third flag. At this point, I needed to gather more information about the system. I suspected that retrieving the final ingredient would likely require some form of **privilege escalation**.  
   
@@ -201,7 +201,7 @@ sudo -l
 
 The output revealed something very promising:
 
-![[Pickle Rick18.png]]
+![Pickle Rick 18](images/PickleRick18.png)
 
 This essentially means that we, as the user `www-data`, can execute **any command with `sudo` privileges** without being prompted for a password.
 
@@ -212,7 +212,7 @@ sudo ls /root/
 
 reveals the following:
 
-![[Pickle Rick19.png]]
+![Pickle Rick 19](images/PickleRick19.png)
 
 Great! We can see a file named `3rd.txt`, which is very likely the final ingredient.  
   
@@ -224,7 +224,7 @@ sudo tac /root/3rd.txt
 
 This reveals the final ingredient:
 
-![[Pickle Rick20.png]]
+![Pickle Rick 20](images/PickleRick20.png)
 
 ___
 ## Retrieved Ingredients
