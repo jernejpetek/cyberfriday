@@ -1,0 +1,77 @@
+[
+  {
+    "title": "THM — Silver Platter Challenge",
+    "date": "2026-01-07",
+    "type": "TryHackMe",
+    "tags": [
+      "writeup",
+      "thm"
+    ],
+    "summary": "Silver Platter room writeup.",
+    "url": "read.html?md=labs/thm/silver-platter-challenge.md"
+  },
+  {
+    "title": "Capturing and Modifying Requests Using Burp Suite",
+    "date": "2026-01-07",
+    "type": "Guide",
+    "tags": [
+      "guide",
+      "proxy",
+      "burp-suite"
+    ],
+    "summary": "Intercepting requests with Burp and FoxyProxy.",
+    "url": "read.html?md=labs/guides/silverpeas-proxy.md"
+  },
+  {
+    "title": "THM — Intermediate Nmap Challenge",
+    "date": "2026-01-07",
+    "type": "TryHackMe",
+    "tags": [
+      "writeup",
+      "thm",
+      "nmap"
+    ],
+    "summary": "Intermediate Nmap room writeup.",
+    "url": "read.html?md=labs/thm/intermediate-nmap-challange.md"
+  },
+  {
+    "title": "DVWA — Setup and Reflected XSS",
+    "date": "2026-01-07",
+    "type": "Lab",
+    "tags": [
+      "writeup",
+      "web",
+      "xss",
+      "dvwa"
+    ],
+    "summary": "Setting up Damn Vulnerable Web Application (DVWA) in Docker and exploiting a reflected XSS vulnerability in a controlled lab environment.",
+    "url": "read.html?md=labs/Lab/setup-and-reflected-xss.md"
+  },
+  {
+    "title": "How to Test CVE-2025-55182 with React2Shell Scanner",
+    "date": "2026-01-10",
+    "type": "Guide",
+    "tags": [
+      "guide",
+      "scanner",
+      "docker",
+      "cve"
+    ],
+    "summary": "Testing for CVE-2025-55182 using the React2Shell scanner.",
+    "url": "read.html?md=labs/guides/react2shell-testing.md"
+  },
+  {
+    "title": "THM — Pickle Rick Challenge",
+    "date": "2026-03-04",
+    "type": "TryHackMe",
+    "tags": [
+      "writeup",
+      "thm",
+      "web",
+      "web-exploitation",
+      "privilege-escalation"
+    ],
+    "summary": "Beginner-friendly TryHackMe room focused on web enumeration, command execution, and basic privilege escalation.",
+    "url": "read.html?md=labs/thm/pickle-rick.md"
+  }
+]
