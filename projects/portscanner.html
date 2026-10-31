@@ -1,106 +1,14 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HWNLJN7DJ1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
-    gtag('config', 'G-HWNLJN7DJ1');
-  </script>
-
-  <title>How I Built a Simple Python Port Scanner (WSL + VS Code) • CyberFriday</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="dark light" />
-  <meta name="description" content="CyberFriday project post: setting up WSL + VS Code and building a simple Python port scanner (learning-focused, ethical use)." />
-
-    <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
-  <link rel="manifest" href="/assets/icons/site.webmanifest">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/style.css" />
-
-  <style>
-    .postwrap{padding:18px;border-radius:24px;background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow)}
-    .postwrap h1{margin-top:0;letter-spacing:-.4px}
-    .postmeta{color:var(--muted2);font-size:.95rem;margin:0 0 14px}
-    .postwrap p{color:var(--muted);line-height:1.85}
-    .postwrap h2,.postwrap h3{color:var(--text);margin:22px 0 8px}
-    .figure{margin:14px 0 22px;text-align:center}
-    .figure img{max-width:100%;height:auto;border:1px solid var(--border);border-radius:16px}
-    .figcap{margin-top:8px;font-size:.95rem;color:var(--muted2)}
-    .note{padding:12px 14px;border-radius:16px;border:1px solid var(--border);background:var(--card2);color:var(--muted);margin:14px 0}
-    code{background:var(--card2);border:1px solid var(--border);padding:2px 6px;border-radius:8px;color:var(--text)}
-    .postwrap a{ text-decoration: underline; text-underline-offset: 3px; }
-    .brand{ text-decoration: none !important; }
-  </style>
-</head>
-
-<body data-page="post">
-  <a class="skip" href="#main">Skip to content</a>
-
-  <header class="topbar">
-    <div class="container topbar__inner">
-      <a class="brand" href="../index.html" aria-label="Home">
-        <span class="brand__mark">CF</span>
-        <span class="brand__text">CyberFriday</span>
-      </a>
-
-      <div class="topbar__actions">
-        <button class="iconbtn" id="themeBtn" type="button" title="Toggle theme" aria-label="Toggle theme">
-          <span class="icon" aria-hidden="true">☾</span>
-        </button>
-        <button class="iconbtn" id="menuBtn" type="button" title="Menu" aria-label="Open menu">
-          <span class="icon" aria-hidden="true">≡</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <div class="modal" id="menu" hidden>
-    <div class="modal__backdrop" data-close="true"></div>
-    <div class="modal__panel modal__panel--menu" role="dialog" aria-modal="true" aria-label="Menu">
-      <div class="modal__head">
-        <div class="menu__title">
-          <div class="menu__brand">CyberFriday</div>
-          <div class="muted tiny">Navigate</div>
-        </div>
-        <button class="iconbtn" type="button" data-close="true" aria-label="Close">✕</button>
-      </div>
-      <div class="modal__body menu__body">
-        <a class="menulink" href="../index.html">Home</a>
-        <a class="menulink" href="../writeups.html">Writeups</a>
-        <a class="menulink" href="../projects.html">Projects</a>
-        <a class="menulink" href="../notes.html">Notes</a>
-        <a class="menulink" href="../learning-resources.html">Learning Resources</a>
-        <a class="menulink" href="../about.html">About</a>
-      </div>
-      <div class="modal__foot muted tiny"><span>Esc to close</span></div>
-    </div>
-  </div>
-
-  <main id="main">
-    <section class="pagehead">
-      <div class="container">
-        <h1 class="pagehead__title">Simple Python Port Scanner (WSL + VS Code)</h1>
-        <p class="pagehead__sub muted">
-          A CyberFriday learning project: environment setup, workflow, and a beginner port-scanning script.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <article class="postwrap reveal">
+<!DOCTYPE html>
+<html lang="en"><head>
+  <script src="../assets/theme.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python Port Scanner — CyberFriday</title><meta name="description" content="Learning to build a Python port scanner using WSL and VS Code.">
+<link rel="stylesheet" href="../assets/style.css"></head><body data-page="projects">
+<a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><div class="header-container header-inner"><a class="brand" href="../index.html">CyberFriday</a>
+<nav class="nav" aria-label="Main navigation"><a href="../index.html">Home</a><a href="../blog.html">Blog</a><a href="../labs.html">Labs</a><a href="../projects.html">Projects</a><a href="../research.html">Research</a><a href="../about.html">About</a></nav></div></header>
+<main id="content"><section class="pagehead"><div class="container pagehead-inner"><a class="back-link" href="../projects.html">← Back to Projects</a>
+<h1>Simple Python Port Scanner (WSL + VS Code)</h1><p>A CyberFriday learning project: environment setup, workflow, and a beginner port-scanning script.</p></div></section>
+<section class="section"><div class="container read-container"><article class="postwrap">
           <p class="postmeta">
             Posted on <strong>September 26, 2025</strong> •
             <span class="tag">Python</span> <span class="tag">WSL</span> <span class="tag">nmap</span>
@@ -167,18 +75,6 @@
           <p>
             Back to <a href="../projects.html">Projects</a>.
           </p>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer__inner">
-      <p class="muted tiny">© <span id="year"></span> CyberFriday</p>
-      <p class="muted tiny"><a href="#main">Back to top</a></p>
-    </div>
-  </footer>
-
-  <script src="../assets/app.js" defer></script>
-</body>
-</html>
+        </article></div></section></main>
+<footer class="footer"><div class="container footer-inner"><p>© <span id="year"></span> CyberFriday</p><div class="footer-links"><a href="../about.html">About</a><a href="../projects.html">Projects</a><a href="https://github.com/jernejpetek">GitHub</a></div></div></footer>
+<script src="../assets/app.js" defer></script><script src="../assets/analytics.js" defer></script></body></html>

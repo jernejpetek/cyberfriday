@@ -1,195 +1,109 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HWNLJN7DJ1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
-    gtag('config', 'G-HWNLJN7DJ1');
-  </script>
+  <script src="assets/theme.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>CyberFriday – Cybersecurity Notes, Writeups & Study Resources</title>
+  <title>CyberFriday — Cybersecurity Notes, Labs, Projects and Research</title>
 
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="dark light" />
-  <meta name="description" content="CyberFriday is a structured cybersecurity learning hub featuring theory notes, technical writeups, tool cheat sheets, projects, and certification preparation resources." />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
-  <link rel="manifest" href="/assets/icons/site.webmanifest">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <meta
+    name="description"
+    content="CyberFriday is a cybersecurity archive with blog posts, labs, projects, research, and experiments."
+  />
 
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 
 <body data-page="home">
-  <a class="skip" href="#main">Skip to content</a>
+  <a class="skip" href="#content">Skip to content</a>
 
-  <header class="topbar">
-    <div class="container topbar__inner">
-      <a class="brand" href="index.html" aria-label="Home">
-        <span class="brand__mark">CF</span>
-        <span class="brand__text">CyberFriday
-        </span>
-      </a>
+  <header class="site-header">
+    <div class="header-container header-inner">
+      <a class="brand" href="index.html">CyberFriday</a>
 
-      <div class="topbar__actions">
-        <button class="iconbtn" id="themeBtn" type="button" title="Toggle theme" aria-label="Toggle theme">
-          <span class="icon" aria-hidden="true">☾</span>
-        </button>
-        <button class="iconbtn" id="menuBtn" type="button" title="Menu" aria-label="Open menu">
-          <span class="icon" aria-hidden="true">≡</span>
-        </button>
-      </div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="labs.html">Labs</a>
+        <a href="projects.html">Projects</a>
+        <a href="research.html">Research</a>
+        <a href="about.html">About</a>
+      </nav>
     </div>
   </header>
 
-  <div class="modal" id="menu" hidden>
-    <div class="modal__backdrop" data-close="true"></div>
-    <div class="modal__panel modal__panel--menu" role="dialog" aria-modal="true" aria-label="Menu">
-      <div class="modal__head">
-        <div class="menu__title">
-          <div class="menu__brand">CyberFriday</div>
-          <div class="muted tiny">Navigate</div>
-        </div>
-        <button class="iconbtn" type="button" data-close="true" aria-label="Close">✕</button>
-      </div>
-      <div class="modal__body menu__body">
-        <a class="menulink" href="index.html">Home</a>
-        <a class="menulink" href="writeups.html">Writeups</a>
-        <a class="menulink" href="projects.html">Projects</a>
-        <a class="menulink" href="notes.html">Notes</a>
-        <a class="menulink" href="learning-resources.html">Learning Resources</a>
-        <a class="menulink" href="about.html">About</a>
-      </div>
-      <div class="modal__foot muted tiny">
-        <span>Esc to close</span>
-      </div>
-    </div>
-  </div>
+  <main id="content">
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>CyberFriday.</h1>
 
-  <main id="main">
-    <section class="hero hero--simple">
-      <div class="container hero__inner hero__inner--single">
-        <div class="hero__copy reveal">
-          <p class="pill">Security writeups • Guides • Notes • Projects</p>
-          <h1 class="hero__title">CyberFriday</h1>
-          <div class="hero__subtitle">
-             <p>
-              CyberFriday is a structured cybersecurity learning hub documenting my journey
-              through security theory, certification preparation, technical writeups, tool
-              cheat sheets, and security-focused projects.
-            </p>
-            
-            <p>
-              Here you’ll find organized cybersecurity notes, concept explanations, command
-              references, and detailed writeups covering topics such as network security
-              fundamentals, ethical hacking principles, vulnerability analysis, and
-              defensive security concepts. Practical tool cheat sheets and curated command
-              lists are included to support structured study and technical understanding.
-              All material is shared openly as part of my learning process to help other
-              students and aspiring security professionals.
-            </p>
-            
-            <p>
-              CyberFriday is intended strictly for ethical and educational purposes.
-              I do not support illegal or malicious activity, and the content published
-              here is meant to promote responsible learning, professional growth, and
-              a deeper understanding of cybersecurity fundamentals. Responsibility for
-              how the material is used rests entirely with the reader.
-            </p>
-          </div>
-
-          <div class="cta-row">
-            <a class="btn btn--ghost" href="writeups.html">Go to Writeups and Guides</a>
-            <a class="btn btn--ghost" href="projects.html">Go to Projects</a>
-            <a class="btn btn--ghost" href="notes.html">Go to Notes</a>
-            <a class="btn btn--ghost" href="learning-resources.html">Go to Learning Resources</a>
-          </div>
+          <p class="hero-subtitle">
+            Personal cybersecurity notes, research, writeups, and experiments.
+          </p>
         </div>
       </div>
-      <div class="hero__bg" aria-hidden="true"></div>
     </section>
 
-    <section class="section">
+    <section class="section explore-section">
       <div class="container">
-        <div class="grid grid--cards">
-          <div class="card reveal">
-            <h2 class="h2">About me</h2>
-            <p class="muted">
-              Hi, I’m JP — the creator of CyberFriday. CyberFriday documents hands-on security learning through labs,
-              writeups, certification prep, and small projects.
+        <div class="section-heading">
+          <h2>Explore</h2>
+          <p>Everything on this site fits into one of these buckets.</p>
+        </div>
+
+        <div class="cards">
+          <a class="card" href="blog.html">
+            <span>Blog</span>
+            <h3>Notes and updates</h3>
+            <p>
+              Short posts, learning notes, certification preparation, thoughts, and things worth writing down.
             </p>
+          </a>
 
-            <div class="chips">
-              <span class="chip">Ethical hacking</span>
-              <span class="chip">Red team</span>
-              <span class="chip">Writeups</span>
-              <span class="chip">Challenges</span>
-              <span class="chip">Notes</span>
-            </div>
+          <a class="card" href="labs.html">
+            <span>Labs</span>
+            <h3>Hands-on practice</h3>
+            <p>
+              TryHackMe, Hack The Box, PortSwigger, DVWA, custom vulnerable apps, and practical exercises.
+            </p>
+          </a>
 
-            <div class="spacer"></div>
-            <a class="btn btn--small btn--ghost" href="about.html">More about me →</a>
-          </div>
+          <a class="card" href="projects.html">
+            <span>Projects</span>
+            <h3>Things I built</h3>
+            <p>
+              Small tools, scripts, lab setups, experiments, and security-focused builds.
+            </p>
+          </a>
 
-          <div class="card reveal">
-            <h2 class="h2">About this page</h2>
-              <p class="muted">
-                The site is intentionally kept simple so the focus stays on the content
-                and the learning behind it.
-              </p>
-          </div>
-
-          <div class="card reveal">
-            <h2 class="h2">Quick stats</h2>
-            <div class="stats stats--compact">
-              <div class="stat">
-              <div class="stat__num" id="statWriteups">—</div>
-              <div class="stat__label">Writeups and Guides</div>
-            </div>
-              <div class="stat">
-              <div class="stat__num" id="statProjects">—</div>
-              <div class="stat__label">Projects</div>
-            </div>
-              <div class="stat">
-              <div class="stat__num" id="statNotes">—</div>
-              <div class="stat__label">Notes</div>
-            </div>
-              <div class="stat">
-              <div class="stat__num" id="statLearning">—</div>
-              <div class="stat__label">Learning Resources</div>
-            </div>
-          </div>
-            <p class="muted tiny">A snapshot of the content currently published on CyberFriday.</p>
-          </div>
+          <a class="card" href="research.html">
+            <span>Research</span>
+            <h3>Longer research work</h3>
+            <p>
+              PDF notes, technical documents, structured investigations, and deeper cybersecurity research.
+            </p>
+          </a>
         </div>
       </div>
     </section>
   </main>
+
   <footer class="footer">
-    <div class="container footer__inner">
-      <p class="muted tiny">© <span id="year"></span> CyberFriday
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> CyberFriday</p>
 
-
-
-</p>
-      <p class="muted tiny"><a href="#main">Back to top</a></p>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="https://github.com/jernejpetek">GitHub</a>
+      </div>
     </div>
   </footer>
 
-  <script src="assets/app.js" defer></script>
-
+  <script src="assets/app.js"></script>
+  <script src="assets/analytics.js" defer></script>
 </body>
 </html>
+

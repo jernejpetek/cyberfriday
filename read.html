@@ -1,199 +1,87 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="dark light" />
-  <title>CyberFriday</title>
+  <script src="assets/theme.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
-  <link rel="icon" href="/assets/icons/favicon.ico">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>CyberFriday — Reading</title>
+
+  <meta
+    name="description"
+    content="CyberFriday article reader for Markdown notes, labs, projects, and research posts."
+  />
+
   <link rel="stylesheet" href="assets/style.css" />
 
-  <!-- Markdown + Sanitizer -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
-
-  <style>
-    /* Post layout that matches v3 look */
-    .postwrap{
-      padding:18px;border-radius:24px;background:var(--card);
-      border:1px solid var(--border);box-shadow:var(--shadow)
-    }
-    .postwrap h1{margin-top:0;letter-spacing:-.4px}
-    .postwrap p, .postwrap li{color:var(--muted);line-height:1.85}
-    .postwrap h2,.postwrap h3{margin-top:22px}
-    .postwrap a{text-decoration:underline;text-underline-offset:3px}
-
-    /* Fix: never underline the top-left brand link on this page */
-    .brand{ text-decoration: none !important; }
-
-    .postwrap img{
-      max-width:100%;height:auto;border-radius:16px;border:1px solid var(--border)
-    }
-    .postwrap blockquote{
-      margin:14px 0;padding:10px 14px;border-left:3px solid var(--border);
-      background:var(--card2);border-radius:12px;color:var(--muted)
-    }
-    .postwrap hr{border:0;border-top:1px solid var(--border);margin:22px 0}
-
-    /* Code blocks: “language pill + copy code” like your screenshot */
-    .codeblock{
-      border:1px solid var(--border);
-      border-radius:16px;
-      overflow:hidden;
-      background:var(--card2);
-      margin:14px 0;
-    }
-    .codeblock__head{
-      display:flex;align-items:center;justify-content:space-between;
-      gap:10px;
-      padding:10px 12px;
-      border-bottom:1px solid var(--border);
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0));
-    }
-    :root[data-theme="light"] .codeblock__head{
-      background:linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,0));
-    }
-    .codeblock__lang{
-      display:inline-flex;align-items:center;gap:8px;
-      font-size:.85rem;color:var(--muted);
-      padding:4px 10px;border-radius:999px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.04);
-    }
-    :root[data-theme="light"] .codeblock__lang{
-      background:rgba(0,0,0,.03);
-    }
-    .codeblock__copy{
-      display:inline-flex;align-items:center;gap:8px;
-      font-size:.85rem;
-      padding:6px 10px;border-radius:12px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-      cursor:pointer;
-      transition:transform 140ms ease, background 140ms ease;
-    }
-    .codeblock__copy:hover{transform:translateY(-1px);background:var(--card)}
-    .codeblock__copy:active{transform:translateY(0)}
-    .codeblock pre{
-      margin:0;
-      padding:14px 14px;
-      overflow:auto;
-    }
-    .codeblock code{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      font-size:.95rem;
-      color:var(--text);
-      background:transparent;
-      border:none;
-      padding:0;
-      border-radius:0;
-      white-space:pre;
-    }
-
-    /* Inline code */
-    .postwrap :not(pre) > code{
-      background:var(--card2);
-      border:1px solid var(--border);
-      padding:2px 6px;
-      border-radius:8px;
-      color:var(--text);
-    }
-
-    /* Small status line */
-    .readmeta{margin:10px 0 0;color:var(--muted2);font-size:.92rem}
-  </style>
 </head>
 
 <body data-page="read">
-  <a class="skip" href="#main">Skip to content</a>
+  <a class="skip" href="#content">Skip to content</a>
 
-  <header class="topbar">
-    <div class="container topbar__inner">
-      <a class="brand" href="index.html" aria-label="Home">
-        <span class="brand__mark">CF</span>
-        <span class="brand__text">CyberFriday</span>
-      </a>
+  <header class="site-header">
+    <div class="header-container header-inner">
+      <a class="brand" href="index.html">CyberFriday</a>
 
-      <div class="topbar__actions">
-        <button class="iconbtn" id="themeBtn" type="button" title="Toggle theme" aria-label="Toggle theme">
-          <span class="icon" aria-hidden="true">☾</span>
-        </button>
-        <button class="iconbtn" id="menuBtn" type="button" title="Menu" aria-label="Open menu">
-          <span class="icon" aria-hidden="true">≡</span>
-        </button>
-      </div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="labs.html">Labs</a>
+        <a href="projects.html">Projects</a>
+        <a href="research.html">Research</a>
+        <a href="about.html">About</a>
+      </nav>
     </div>
   </header>
 
-  <!-- Menu (same as v3) -->
-  <div class="modal" id="menu" hidden>
-    <div class="modal__backdrop" data-close="true"></div>
-    <div class="modal__panel modal__panel--menu" role="dialog" aria-modal="true" aria-label="Menu">
-      <div class="modal__head">
-        <div class="menu__title">
-          <div class="menu__brand">CyberFriday</div>
-          <div class="muted tiny">Navigate</div>
-        </div>
-        <button class="iconbtn" type="button" data-close="true" aria-label="Close">✕</button>
-      </div>
-      <div class="modal__body menu__body">
-        <a class="menulink" href="index.html">Home</a>
-        <a class="menulink" href="writeups.html">Writeups</a>
-        <a class="menulink" href="projects.html">Projects</a>
-        <a class="menulink" href="notes.html">Notes</a>
-        <a class="menulink" href="learning-resources.html">Learning Resources</a>
-        <a class="menulink" href="about.html">About</a>
-      </div>
-      <div class="modal__foot muted tiny"><span>Esc to close</span></div>
-    </div>
-  </div>
-
-  <main id="main">
+  <main id="content">
     <section class="pagehead">
-      <div class="container">
-        <h1 class="pagehead__title" id="postTitle">Loading…</h1>
-        <p class="pagehead__sub muted" id="postSub">CyberFriday</p>
+      <div class="container pagehead-inner">
+        <a class="back-link" id="backLink" href="blog.html">← Back</a>
+
+        <h1 id="postTitle">Loading…</h1>
+
+        <p id="postSub">
+          CyberFriday
+        </p>
+
         <p class="readmeta" id="readMeta"></p>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <article id="content" class="postwrap reveal">Loading…</article>
-        <div class="spacer"></div>
-        <a class="btn btn--small btn--ghost" id="backBtn" href="index.html" hidden></a>
+    <section class="section read-page">
+      <div class="container read-container">
+        <article id="articleContent" class="article">
+          Loading…
+        </article>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container footer__inner">
-      <p class="muted tiny">© <span id="year"></span> CyberFriday</p>
-      <p class="muted tiny"><a href="#main">Back to top</a></p>
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> CyberFriday</p>
+
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="https://github.com/jernejpetek">GitHub</a>
+      </div>
     </div>
   </footer>
 
-  <!-- v3 JS for theme/menu/reveal -->
   <script src="assets/app.js" defer></script>
 
   <script>
-    const contentEl = document.getElementById("content");
-    const titleEl = document.getElementById("postTitle");
-    const subEl = document.getElementById("postSub");
-    const metaEl = document.getElementById("readMeta");
+    const articleContent = document.getElementById("articleContent");
+    const postTitle = document.getElementById("postTitle");
+    const postSub = document.getElementById("postSub");
+    const readMeta = document.getElementById("readMeta");
+    const backLink = document.getElementById("backLink");
 
-    document.getElementById("year").textContent = String(new Date().getFullYear());
-
-    function isRelative(url) {
+    function isRelativeUrl(url) {
       return url &&
         !url.startsWith("http://") &&
         !url.startsWith("https://") &&
@@ -202,151 +90,216 @@
         !url.startsWith("#");
     }
 
-    function normalizeBase(target) {
-      const u = new URL(target, window.location.href);
-      return u.href.substring(0, u.href.lastIndexOf("/") + 1);
+    function getBaseUrl(target) {
+      const url = new URL(target, window.location.href);
+      return url.href.substring(0, url.href.lastIndexOf("/") + 1);
+    }
+
+    function getSectionFromPath(path) {
+      if (path.startsWith("blog/")) {
+        return {
+          label: "Blog",
+          href: "blog.html"
+        };
+      }
+
+      if (path.startsWith("labs/")) {
+        return {
+          label: "Labs",
+          href: "labs.html"
+        };
+      }
+
+      if (path.startsWith("projects/")) {
+        return {
+          label: "Projects",
+          href: "projects.html"
+        };
+      }
+
+      if (path.startsWith("research/")) {
+        return {
+          label: "Research",
+          href: "research.html"
+        };
+      }
+
+      if (path.startsWith("notes/")) {
+        return {
+          label: "Blog",
+          href: "blog.html"
+        };
+      }
+
+      if (path.startsWith("writeups/")) {
+        return {
+          label: "Labs",
+          href: "labs.html"
+        };
+      }
+
+      return {
+        label: "CyberFriday",
+        href: "index.html"
+      };
     }
 
     function enhanceCodeBlocks(root) {
-      root.querySelectorAll("pre > code").forEach((codeEl) => {
-        const pre = codeEl.parentElement;
+      root.querySelectorAll("pre > code").forEach((codeElement) => {
+        const pre = codeElement.parentElement;
 
-        // Try to infer language from class like "language-bash"
-        const cls = Array.from(codeEl.classList).find(c => c.startsWith("language-"));
-        const lang = cls ? cls.replace("language-", "") : "code";
+        const className = Array.from(codeElement.classList)
+          .find((classItem) => classItem.startsWith("language-"));
 
-        // Wrap pre in a styled container
+        const language = className
+          ? className.replace("language-", "")
+          : "code";
+
         const wrapper = document.createElement("div");
         wrapper.className = "codeblock";
 
-        const head = document.createElement("div");
-        head.className = "codeblock__head";
+        const header = document.createElement("div");
+        header.className = "codeblock__head";
 
-        const pill = document.createElement("div");
-        pill.className = "codeblock__lang";
-        pill.textContent = lang;
+        const languageLabel = document.createElement("div");
+        languageLabel.className = "codeblock__lang";
+        languageLabel.textContent = language;
 
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "codeblock__copy";
-        btn.innerHTML = 'Copy code';
+        const copyButton = document.createElement("button");
+        copyButton.type = "button";
+        copyButton.className = "codeblock__copy";
+        copyButton.textContent = "Copy code";
 
-        btn.addEventListener("click", async () => {
-          const text = codeEl.textContent || "";
+        copyButton.addEventListener("click", async () => {
+          const code = codeElement.textContent || "";
+
           try {
-            await navigator.clipboard.writeText(text);
-            const old = btn.textContent;
-            btn.textContent = "Copied!";
-            setTimeout(() => (btn.textContent = old), 900);
+            await navigator.clipboard.writeText(code);
+            copyButton.textContent = "Copied";
+            setTimeout(() => {
+              copyButton.textContent = "Copy code";
+            }, 900);
           } catch {
-            // Fallback if clipboard blocked
-            const ta = document.createElement("textarea");
-            ta.value = text;
-            document.body.appendChild(ta);
-            ta.select();
+            const textarea = document.createElement("textarea");
+            textarea.value = code;
+            document.body.appendChild(textarea);
+            textarea.select();
             document.execCommand("copy");
-            document.body.removeChild(ta);
-            const old = btn.textContent;
-            btn.textContent = "Copied!";
-            setTimeout(() => (btn.textContent = old), 900);
+            document.body.removeChild(textarea);
+
+            copyButton.textContent = "Copied";
+            setTimeout(() => {
+              copyButton.textContent = "Copy code";
+            }, 900);
           }
         });
 
-        head.appendChild(pill);
-        head.appendChild(btn);
+        header.appendChild(languageLabel);
+        header.appendChild(copyButton);
 
-        // Replace in DOM
         pre.replaceWith(wrapper);
-        wrapper.appendChild(head);
+        wrapper.appendChild(header);
         wrapper.appendChild(pre);
       });
     }
 
-    async function loadText(url) {
-      const res = await fetch(url, { cache: "no-store" });
-      if (!res.ok) throw new Error("Failed to load: " + url);
-      return await res.text();
+    async function loadMarkdown(path) {
+      const response = await fetch(path, { cache: "no-store" });
+
+      if (!response.ok) {
+        throw new Error("Could not load " + path);
+      }
+
+      return response.text();
     }
 
-    (async function () {
+    async function renderMarkdown() {
       const params = new URLSearchParams(window.location.search);
-      const mdPath = params.get("md");
-      const srcUrl = params.get("src");
-      const target = mdPath || srcUrl;
+      const markdownPath = params.get("md");
 
-      if (!target) {
-        titleEl.textContent = "Missing file";
-        contentEl.textContent = "Use read.html?md=path/to/file.md";
+      if (!markdownPath) {
+        postTitle.textContent = "Missing file";
+        postSub.textContent = "No Markdown file was provided.";
+        readMeta.textContent = "";
+        articleContent.textContent = "Use read.html?md=blog/example.md";
         return;
       }
 
-      try {
-        const md = await loadText(target);
+      // Restrict fetching to Markdown inside the public content directories.
+      const validPath = /^(blog|labs|learning-resources|research|projects)\/[A-Za-z0-9_./% -]+\.md$/i.test(markdownPath)
+        && !markdownPath.split("/").includes("..")
+        && !markdownPath.includes("\\")
+        && !markdownPath.includes("%2e")
+        && !markdownPath.includes("%2f");
+      if (!validPath) {
+        postTitle.textContent = "Invalid article path";
+        postSub.textContent = "Select an article from Blog or Labs.";
+        readMeta.textContent = "";
+        articleContent.textContent = "Only local Markdown articles can be opened.";
+        return;
+      }
+      const section = getSectionFromPath(markdownPath);
+      backLink.href = section.href;
+      backLink.textContent = "← Back to " + section.label;
+      postSub.textContent = section.label;
+      readMeta.textContent = markdownPath;
 
-        // Configure marked: keep it simple + safe (sanitization is handled by DOMPurify)
+      try {
+        const markdown = await loadMarkdown(markdownPath);
+
         marked.setOptions({
           gfm: true,
-          breaks: false,
-          headerIds: true,
-          mangle: false
+          breaks: false
         });
 
-        const rendered = marked.parse(md);
-        contentEl.innerHTML = DOMPurify.sanitize(rendered);
+        const rendered = marked.parse(markdown);
+        articleContent.innerHTML = DOMPurify.sanitize(rendered);
 
-        // Title from first H1 (if present)
-        const h1 = contentEl.querySelector("h1");
+        const h1 = articleContent.querySelector("h1");
+
         if (h1) {
-          titleEl.textContent = h1.textContent.trim();
+          postTitle.textContent = h1.textContent.trim();
           h1.remove();
         } else {
-          titleEl.textContent = "CyberFriday";
+          postTitle.textContent = "CyberFriday";
         }
 
-        // Subtitle/meta (fixed: reflect the section)
-        if (!mdPath) {
-          subEl.textContent = "External Markdown";
-        } else if (mdPath.startsWith("writeups/")) {
-          subEl.textContent = "Writeup / Guide";
-        } else if (mdPath.startsWith("projects/")) {
-          subEl.textContent = "Project";
-        } else if (mdPath.startsWith("notes/")) {
-          subEl.textContent = "Note";
-        } else if (mdPath.startsWith("learning-resources/")) {
-          subEl.textContent = "Learning Resource";
-        } else {
-          subEl.textContent = "CyberFriday";
-        }
+        const baseUrl = getBaseUrl(markdownPath);
 
-        metaEl.textContent = mdPath ? mdPath : "";
+        articleContent.querySelectorAll("img").forEach((image) => {
+          const src = image.getAttribute("src");
 
-        // Fix relative images + links to be relative to the markdown file
-        const base = normalizeBase(target);
-
-        contentEl.querySelectorAll("img").forEach(img => {
-          const src = img.getAttribute("src");
-          if (isRelative(src)) img.src = new URL(src, base).toString();
-        });
-
-        contentEl.querySelectorAll("a").forEach(a => {
-          const href = a.getAttribute("href");
-          if (isRelative(href)) a.href = new URL(href, base).toString();
-          // external links open in new tab
-          const resolved = a.href || "";
-          if (resolved.startsWith("http://") || resolved.startsWith("https://")) {
-            a.target = "_blank";
-            a.rel = "noreferrer";
+          if (isRelativeUrl(src)) {
+            image.src = new URL(src, baseUrl).toString();
           }
         });
 
-        // Make code blocks look like your screenshot + add Copy button
-        enhanceCodeBlocks(contentEl);
+        articleContent.querySelectorAll("a").forEach((link) => {
+          const href = link.getAttribute("href");
 
-      } catch (e) {
-        titleEl.textContent = "Couldn’t load content";
-        contentEl.textContent = String(e);
+          if (isRelativeUrl(href)) {
+            link.href = new URL(href, baseUrl).toString();
+          }
+
+          if (link.href.startsWith("http://") || link.href.startsWith("https://")) {
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+          }
+        });
+
+        enhanceCodeBlocks(articleContent);
+      } catch (error) {
+        console.error(error);
+
+        postTitle.textContent = "Could not load content";
+        postSub.textContent = "CyberFriday";
+        readMeta.textContent = markdownPath;
+        articleContent.textContent = String(error);
       }
-    })();
+    }
+
+    renderMarkdown();
   </script>
+  <script src="assets/analytics.js" defer></script>
 </body>
 </html>
