@@ -1,0 +1,348 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="../assets/theme.js"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ByteShift — CyberFriday</title>
+
+  <meta
+    name="description"
+    content="How a Kali Linux virtual machine setup inspired ByteShift, a simple data unit converter."
+  >
+
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+
+<body data-page="projects">
+
+  <a class="skip" href="#content">Skip to content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-container header-inner">
+
+      <a class="brand" href="../index.html">
+        CyberFriday
+      </a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="../index.html">Home</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../labs.html">Labs</a>
+        <a href="../projects.html" aria-current="page">Projects</a>
+        <a href="../tools.html">Tools</a>
+        <a href="../research.html">Research</a>
+        <a href="../about.html">About</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="content">
+
+    <!-- Page heading -->
+    <section class="pagehead">
+      <div class="container pagehead-inner">
+
+        <a class="back-link" href="../projects.html">
+          ← Back to Projects
+        </a>
+
+        <h1>ByteShift — A Simple Data Unit Converter</h1>
+
+        <p>
+          A small CyberFriday project inspired by setting up
+          a Kali Linux virtual machine.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- Project article -->
+    <section class="section">
+      <div class="container read-container">
+
+        <article class="postwrap">
+
+          <p class="postmeta">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Web Development</span>
+          </p>
+
+          <h2>How the idea started</h2>
+
+          <p>
+            The idea for ByteShift came up while I was
+            configuring my Kali Linux virtual machine.
+            I wanted to give it enough resources to run
+            comfortably, so I started looking at how much
+            RAM, how many CPU cores, and how much disk
+            space I should allocate.
+          </p>
+
+          <p>
+            My computer has an AMD Ryzen 5 5600 processor,
+            16 GB of DDR4 RAM, and a 1 TB SSD.
+            I was considering allocating 8 GB of RAM,
+            four virtual CPU cores, and around 80–120 GB
+            of disk space to Kali Linux.
+          </p>
+
+          <p>
+            While checking the memory and disk values,
+            I came across the difference between units
+            like GB and GiB.
+            I remembered learning about decimal and
+            binary units, but I had become a little
+            rusty with the conversions.
+          </p>
+
+          <p>
+            Of course, I could calculate everything
+            manually or search for an online converter.
+            But then I thought: why not build my own?
+          </p>
+
+          <p>
+            That simple idea turned into ByteShift,
+            a lightweight data unit converter that
+            I could use myself and share with others
+            through CyberFriday.
+          </p>
+
+          <h2>What is ByteShift?</h2>
+
+          <p>
+            ByteShift is a simple web-based tool
+            for converting between common digital
+            data units.
+          </p>
+
+          <p>
+            It supports bits, bytes, kilobytes,
+            megabytes, gigabytes, terabytes,
+            and binary units such as KiB, MiB,
+            GiB, and TiB.
+          </p>
+
+          <p>
+            The goal was to make something small,
+            practical, and easy to understand.
+            There is no account, no installation,
+            and no complicated interface.
+            You just enter a value, choose the units,
+            and get the result.
+          </p>
+
+          <h2>How does it work?</h2>
+
+          <p>
+            The converter uses JavaScript to perform
+            the calculations directly in the browser.
+          </p>
+
+          <p>
+            Every supported unit has a conversion
+            factor based on bytes.
+            When a value is entered, ByteShift first
+            converts it to bytes and then divides
+            that value by the conversion factor
+            of the selected output unit.
+          </p>
+
+          <p>
+            For example, decimal units use powers
+            of 1000, while binary units use powers
+            of 1024.
+          </p>
+
+          <ul class="bullets">
+            <li>
+              <strong>1 GB</strong> =
+              1,000,000,000 bytes
+            </li>
+            <li>
+              <strong>1 GiB</strong> =
+              1,073,741,824 bytes
+            </li>
+            <li>
+              <strong>8 GiB</strong> =
+              8.589934592 GB
+            </li>
+          </ul>
+
+          <p>
+            The same principle works for all
+            supported conversions.
+            Bits are handled by using the fact
+            that one byte contains eight bits.
+          </p>
+
+          <h2>Technologies used</h2>
+
+          <p>
+            ByteShift was built using three
+            basic web technologies:
+          </p>
+
+          <ul class="bullets">
+            <li>
+              <strong>HTML</strong> —
+              provides the structure, input fields,
+              unit selectors, and result display.
+            </li>
+
+            <li>
+              <strong>CSS</strong> —
+              handles the layout and visual design,
+              matching the existing CyberFriday
+              light and dark themes.
+            </li>
+
+            <li>
+              <strong>JavaScript</strong> —
+              performs conversions, updates results,
+              swaps units, and provides the
+              reset and copy functions.
+            </li>
+          </ul>
+
+          <p>
+            Everything runs locally in the browser,
+            so the values entered into the converter
+            do not need to be sent to a server.
+          </p>
+
+          <h2>What I learned</h2>
+
+          <p>
+            Even though ByteShift is a relatively
+            small project, building it was a useful
+            learning experience.
+          </p>
+
+          <ul class="bullets">
+            <li>
+              I refreshed my understanding of
+              decimal and binary data units.
+            </li>
+
+            <li>
+              I practiced using JavaScript
+              to perform calculations and update
+              a webpage dynamically.
+            </li>
+
+            <li>
+              I learned more about organizing
+              HTML, CSS, and JavaScript files
+              inside an existing website.
+            </li>
+
+            <li>
+              I gained experience integrating
+              a new tool into CyberFriday while
+              keeping the existing design,
+              navigation, and themes consistent.
+            </li>
+          </ul>
+
+          <h2>Try ByteShift</h2>
+
+          <p>
+            ByteShift is available as a free
+            web tool on CyberFriday.
+            You can open it directly in your browser:
+          </p>
+
+          <p>
+            <a
+              href="https://cyberfriday.pro/tools/byteshift/byteshift.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open ByteShift — Data Unit Converter →
+            </a>
+          </p>
+
+          <p>
+            The source code is also available
+            in the CyberFriday GitHub repository.
+          </p>
+
+          <p>
+            <a
+              href="https://github.com/jernejpetek/cyberfriday/tree/main/tools/byteshift"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View ByteShift on GitHub →
+            </a>
+          </p>
+
+          <h2>Final thoughts</h2>
+
+          <p>
+            ByteShift started with a very simple
+            problem: I needed to understand a few
+            storage and memory unit conversions
+            while configuring a virtual machine.
+          </p>
+
+          <p>
+            Instead of using an existing converter,
+            I decided to turn that small problem
+            into a practical web development project.
+          </p>
+
+          <p>
+            It is not a complicated application,
+            but that was never the goal.
+            I wanted to build something useful,
+            learn along the way, and make it
+            available to anyone who might need it.
+          </p>
+
+          <p>
+            Back to
+            <a href="../projects.html">Projects</a>.
+          </p>
+
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+
+      <p>
+        © <span id="year"></span> CyberFriday
+      </p>
+
+      <div class="footer-links">
+        <a href="../about.html">About</a>
+        <a href="../projects.html">Projects</a>
+        <a href="https://github.com/jernejpetek">
+          GitHub
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="../assets/app.js" defer></script>
+  <script src="../assets/analytics.js" defer></script>
+
+</body>
+</html>

@@ -1,4 +1,18 @@
 [
+  
+  {
+    "title": "ByteShift — A Simple Data Unit Converter",
+    "date": "2026-11-13",
+    "type": "Web Development",
+    "summary": "A lightweight data unit converter inspired by configuring a Kali Linux virtual machine. Convert between decimal and binary units using HTML, CSS, and JavaScript.",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "ByteShift"
+    ],
+    "url": "projects/byteshift_converter.html"
+  },
   {
     "title": "Simple Python Port Scanner (WSL + VS Code)",
     "date": "2025-09-26",
