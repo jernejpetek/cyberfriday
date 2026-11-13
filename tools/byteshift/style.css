@@ -1,0 +1,363 @@
+
+/* =========================================
+   ByteShift — CyberFriday
+   Version 1.0
+   ========================================= */
+
+/* Local design tokens - light theme */
+
+.bs-section {
+  --bs-text: var(--text, #171a17);
+  --bs-muted: var(--muted, #596158);
+  --bs-line: var(--border-soft, #cdd3cb);
+  --bs-surface: var(--paper, #ffffff);
+  --bs-field: var(--bg-soft, #f5f6f2);
+  --bs-accent: #267a39;
+  --bs-result: #edf5ed;
+
+  padding: 48px 0 90px;
+  color: var(--bs-text);
+}
+
+/* Dark theme */
+
+:root[data-theme="dark"] .bs-section {
+  --bs-text: #f0f4ee;
+  --bs-muted: #b7c3b8;
+  --bs-line: #35473b;
+  --bs-surface: #151c17;
+  --bs-field: #1d2720;
+  --bs-accent: #a1e6aa;
+  --bs-result: #1b3021;
+}
+
+/* Applies box sizing inside the component */
+
+.bs-section *,
+.bs-section *::before,
+.bs-section *::after {
+  box-sizing: border-box;
+}
+
+/* Page heading label */
+
+.pagehead .bs-eyebrow {
+  margin-bottom: 22px;
+  color: var(--accent, #267a39);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+/* Converter layout */
+
+.bs-converter {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 36px 0;
+
+  border-top: 1px solid var(--bs-line);
+  border-bottom: 1px solid var(--bs-line);
+}
+
+.bs-topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+
+  margin-bottom: 36px;
+
+  color: var(--bs-muted);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.bs-version {
+  padding: 5px 12px;
+  border: 1px solid var(--bs-line);
+  border-radius: 100px;
+  font-size: 0.72rem;
+}
+
+/* Form */
+
+.bs-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.bs-field {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 10px;
+}
+
+.bs-full {
+  grid-column: 1 / -1;
+}
+
+.bs-section .bs-field label {
+  color: var(--bs-text);
+  font-size: 0.9rem;
+  font-weight: 750;
+}
+
+.bs-section .bs-field input,
+.bs-section .bs-field select {
+  display: block;
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+
+  background: var(--bs-field);
+  color: var(--bs-text);
+
+  border: 1px solid var(--bs-line);
+  border-radius: 3px;
+
+  font: inherit;
+  font-size: 1rem;
+
+  color-scheme: light;
+  transition: border-color 0.2s;
+}
+
+:root[data-theme="dark"] .bs-section input,
+:root[data-theme="dark"] .bs-section select {
+  color-scheme: dark;
+}
+
+.bs-section .bs-field select option,
+.bs-section .bs-field select optgroup {
+  background: var(--bs-surface);
+  color: var(--bs-text);
+}
+
+.bs-section input:focus,
+.bs-section select:focus {
+  border-color: var(--bs-accent);
+  outline: 2px solid var(--bs-accent);
+  outline-offset: 2px;
+}
+
+/* Buttons */
+
+.bs-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  margin: 24px 0 40px;
+}
+
+.bs-section .bs-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 44px;
+  padding: 11px 18px;
+
+  background: var(--bs-surface);
+  color: var(--bs-text);
+
+  border: 1px solid var(--bs-line);
+  border-radius: 3px;
+
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 750;
+
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s;
+}
+
+.bs-section .bs-button:hover {
+  border-color: var(--bs-accent);
+  background: var(--bs-field);
+}
+
+.bs-section .bs-button:focus-visible {
+  outline: 2px solid var(--bs-accent);
+  outline-offset: 3px;
+}
+
+.bs-button-muted {
+  opacity: 0.85;
+}
+
+/* Result */
+
+.bs-result {
+  padding: 30px;
+  background: var(--bs-result);
+  border-left: 3px solid var(--bs-accent);
+}
+
+.bs-result-label {
+  display: block;
+  margin-bottom: 22px;
+
+  color: var(--bs-muted);
+  font-size: 0.74rem;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+}
+
+.bs-result-value {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  overflow-wrap: anywhere;
+}
+
+.bs-section #result {
+  color: var(--bs-text);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+.bs-section #result-unit {
+  color: var(--bs-accent);
+  font-size: 1.25rem;
+  font-weight: 850;
+}
+
+.bs-section #formula {
+  margin: 18px 0 24px;
+  color: var(--bs-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.bs-section .bs-copy {
+  background: var(--bs-text);
+  color: var(--bs-surface);
+  border-color: var(--bs-text);
+}
+
+.bs-section .bs-copy:hover {
+  background: var(--bs-accent);
+  color: var(--bs-surface);
+  border-color: var(--bs-accent);
+}
+
+.bs-section .bs-status {
+  min-height: 1.2em;
+  margin: 12px 0 0;
+  color: var(--bs-muted);
+  font-size: 0.8rem;
+}
+
+/* Educational information */
+
+.bs-info {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+
+  width: 100%;
+  max-width: 880px;
+  margin: 70px auto 0;
+}
+
+.bs-info-item {
+  min-width: 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--bs-line);
+}
+
+.bs-info-number {
+  color: var(--bs-accent);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.bs-section .bs-info-item h2 {
+  margin: 18px 0;
+  color: var(--bs-text);
+  font-size: 1.6rem;
+  font-weight: 850;
+  letter-spacing: -0.04em;
+}
+
+.bs-section .bs-info-item p {
+  margin-bottom: 18px;
+  color: var(--bs-muted);
+  font-size: 0.96rem;
+  line-height: 1.8;
+}
+
+.bs-section .bs-info-item code {
+  display: block;
+  color: var(--bs-accent);
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
+.bs-section .bs-privacy {
+  max-width: 880px;
+  margin: 60px auto 0;
+
+  color: var(--bs-muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+/* Responsive */
+
+@media (max-width: 650px) {
+  .bs-section {
+    padding: 30px 0 60px;
+  }
+
+  .bs-converter {
+    padding: 26px 0;
+  }
+
+  .bs-fields,
+  .bs-info {
+    grid-template-columns: 1fr;
+  }
+
+  .bs-full {
+    grid-column: auto;
+  }
+
+  .bs-actions {
+    justify-content: stretch;
+    margin-bottom: 28px;
+  }
+
+  .bs-section .bs-actions button {
+    flex: 1;
+  }
+
+  .bs-result {
+    padding: 22px;
+  }
+
+  .bs-info {
+    margin-top: 44px;
+    gap: 30px;
+  }
+
+  .bs-section #result {
+    font-size: clamp(1.8rem, 8vw, 2.8rem);
+  }
+}

@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="Free IT and cybersecurity tools by CyberFriday.">
+
+  <title>Tools — CyberFriday</title>
+
+  <script src="assets/theme.js"></script>
+  <link rel="stylesheet" href="assets/style.css">
+
+  <style>
+    .tools-section {
+      padding: 64px 0 100px;
+    }
+
+    .tools-list {
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(100%, 320px), 1fr)
+      );
+      gap: 18px;
+    }
+
+    .tool-card {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-height: 220px;
+      padding: 30px;
+      text-decoration: none;
+      color: var(--text, #171a17);
+      background: var(--paper, #ffffff);
+      border: 1px solid var(--border-soft, #d3d8d0);
+      border-radius: 3px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .tool-card:hover {
+      border-color: var(--accent, #247a35);
+      transform: translateY(-3px);
+    }
+
+    .tool-card:focus-visible {
+      outline: 2px solid var(--accent, #247a35);
+      outline-offset: 4px;
+    }
+
+    .tool-label {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      color: var(--accent-dark, #247a35);
+    }
+
+    .tool-card h2 {
+      margin: 0;
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
+      letter-spacing: -0.05em;
+      color: var(--text, #171a17);
+    }
+
+    .tool-card p {
+      margin: 0;
+      line-height: 1.7;
+      color: var(--muted, #555e55);
+    }
+
+    .tool-link {
+      margin-top: auto;
+      font-weight: 800;
+      color: var(--text, #171a17);
+    }
+
+    :root[data-theme="dark"] .tool-card {
+      background: var(--paper, #171d19);
+      color: var(--text, #f2f5f0);
+    }
+
+    :root[data-theme="dark"] .tool-label {
+      color: var(--accent, #9adea5);
+    }
+
+    @media (max-width: 600px) {
+      .tools-section {
+        padding: 36px 0 64px;
+      }
+
+      .tool-card {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <a class="skip" href="#content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-container header-inner">
+
+      <a class="brand" href="index.html">
+        CyberFriday
+      </a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="labs.html">Labs</a>
+        <a href="projects.html">Projects</a>
+        <a href="tools.html" aria-current="page">Tools</a>
+        <a href="research.html">Research</a>
+        <a href="about.html">About</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="content">
+
+    <section class="pagehead">
+      <div class="container pagehead-inner">
+
+        <h1>Tools.</h1>
+
+        <p>
+          Small utilities for everyday IT,
+          development and cybersecurity.
+        </p>
+
+      </div>
+    </section>
+
+    <section class="tools-section">
+      <div class="container">
+
+        <div class="tools-list">
+
+          <a class="tool-card"
+             href="tools/byteshift/byteshift.html">
+
+            <span class="tool-label">
+              TOOL 001 / DATA CONVERSION
+            </span>
+
+            <h2>ByteShift.</h2>
+
+            <p>
+              Convert between bits, bytes, decimal
+              and binary storage units.
+              Fast, accurate and privacy-friendly.
+            </p>
+
+            <span class="tool-link">
+              Open tool &rarr;
+            </span>
+
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+
+      <p>
+        &copy; <span id="year"></span> CyberFriday
+      </p>
+
+      <div class="footer-links">
+        <a href="projects.html">Projects</a>
+        <a href="https://github.com/jernejpetek/cyberfriday"
+           target="_blank"
+           rel="noopener noreferrer">
+          GitHub
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="assets/app.js" defer></script>
+  <script src="assets/analytics.js" defer></script>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>

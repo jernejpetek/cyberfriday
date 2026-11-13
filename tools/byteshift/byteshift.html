@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="ByteShift — free data unit converter by CyberFriday.">
+
+  <title>ByteShift — CyberFriday</title>
+
+  <!-- CyberFriday global theme and styles -->
+  <script src="../../assets/theme.js"></script>
+  <link rel="stylesheet" href="../../assets/style.css">
+
+  <!-- ByteShift styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Converter logic -->
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <a class="skip" href="#content">Skip to content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-container header-inner">
+
+      <a class="brand" href="../../index.html">
+        CyberFriday
+      </a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="../../index.html">Home</a>
+        <a href="../../blog.html">Blog</a>
+        <a href="../../labs.html">Labs</a>
+        <a href="../../projects.html">Projects</a>
+        <a href="../../tools.html"
+           aria-current="page">Tools</a>
+        <a href="../../research.html">Research</a>
+        <a href="../../about.html">About</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="content">
+
+    <!-- Page heading -->
+    <section class="pagehead">
+      <div class="container pagehead-inner">
+
+        <p class="bs-eyebrow">
+          CYBERFRIDAY / TOOLS / 001
+        </p>
+
+        <h1>ByteShift.</h1>
+
+        <p>
+          Data unit converter.
+          Binary and decimal conversions,
+          without unnecessary complexity.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- Converter -->
+    <section class="bs-section">
+      <div class="container">
+
+        <div class="bs-converter">
+
+          <div class="bs-topline">
+            <span>DATA UNIT CONVERTER</span>
+            <span class="bs-version">V1.0</span>
+          </div>
+
+          <div class="bs-fields">
+
+            <!-- Numeric input -->
+            <div class="bs-field bs-full">
+              <label for="amount">Value</label>
+
+              <input
+                type="number"
+                id="amount"
+                value="8"
+                min="0"
+                step="any"
+                placeholder="Enter a value"
+              >
+            </div>
+
+            <!-- Source unit -->
+            <div class="bs-field">
+              <label for="from-unit">From</label>
+
+              <select id="from-unit">
+                <optgroup label="Decimal Units (Base 1000)">
+                  <option value="bit">bit</option>
+                  <option value="B">byte (B)</option>
+                  <option value="kbit">kilobit (kbit)</option>
+                  <option value="Mbit">megabit (Mbit)</option>
+                  <option value="Gbit">gigabit (Gbit)</option>
+                  <option value="KB">kilobyte (KB)</option>
+                  <option value="MB">megabyte (MB)</option>
+                  <option value="GB">gigabyte (GB)</option>
+                  <option value="TB">terabyte (TB)</option>
+                </optgroup>
+
+                <optgroup label="Binary Units (Base 1024)">
+                  <option value="KiB">kibibyte (KiB)</option>
+                  <option value="MiB">mebibyte (MiB)</option>
+                  <option value="GiB" selected>
+                    gibibyte (GiB)
+                  </option>
+                  <option value="TiB">tebibyte (TiB)</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <!-- Target unit -->
+            <div class="bs-field">
+              <label for="to-unit">To</label>
+
+              <select id="to-unit">
+                <optgroup label="Decimal Units (Base 1000)">
+                  <option value="bit">bit</option>
+                  <option value="B">byte (B)</option>
+                  <option value="kbit">kilobit (kbit)</option>
+                  <option value="Mbit">megabit (Mbit)</option>
+                  <option value="Gbit">gigabit (Gbit)</option>
+                  <option value="KB">kilobyte (KB)</option>
+                  <option value="MB">megabyte (MB)</option>
+                  <option value="GB" selected>
+                    gigabyte (GB)
+                  </option>
+                  <option value="TB">terabyte (TB)</option>
+                </optgroup>
+
+                <optgroup label="Binary Units (Base 1024)">
+                  <option value="KiB">kibibyte (KiB)</option>
+                  <option value="MiB">mebibyte (MiB)</option>
+                  <option value="GiB">gibibyte (GiB)</option>
+                  <option value="TiB">tebibyte (TiB)</option>
+                </optgroup>
+              </select>
+            </div>
+
+          </div>
+
+          <!-- Actions -->
+          <div class="bs-actions">
+
+            <button id="swap-btn" type="button"
+                    class="bs-button">
+              &#8644; Swap units
+            </button>
+
+            <button id="reset-btn" type="button"
+                    class="bs-button bs-button-muted">
+              Reset
+            </button>
+
+          </div>
+
+          <!-- Output -->
+          <div class="bs-result" aria-live="polite">
+
+            <span class="bs-result-label">
+              CONVERSION RESULT
+            </span>
+
+            <div class="bs-result-value">
+              <output id="result">8.589934592</output>
+              <span id="result-unit">GB</span>
+            </div>
+
+            <p id="formula">
+              1 GiB = 1.073741824 GB
+            </p>
+
+            <button id="copy-btn"
+                    class="bs-button bs-copy"
+                    type="button">
+              Copy result
+            </button>
+
+            <p id="status"
+               class="bs-status"
+               role="status"></p>
+
+          </div>
+
+        </div>
+
+        <!-- Education section -->
+        <div class="bs-info">
+
+          <article class="bs-info-item">
+            <span class="bs-info-number">01 / DECIMAL</span>
+
+            <h2>Decimal units.</h2>
+
+            <p>
+              Decimal units use powers of 1000.
+              Storage manufacturers commonly use
+              these units to advertise capacity.
+            </p>
+
+            <code>1 GB = 1,000,000,000 bytes</code>
+          </article>
+
+          <article class="bs-info-item">
+            <span class="bs-info-number">02 / BINARY</span>
+
+            <h2>Binary units.</h2>
+
+            <p>
+              Binary units use powers of 1024.
+              These units are commonly used
+              when discussing computer memory.
+            </p>
+
+            <code>1 GiB = 1,073,741,824 bytes</code>
+          </article>
+
+        </div>
+
+        <p class="bs-privacy">
+          CLIENT-SIDE ONLY / NO DATA UPLOADED
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+
+      <p>
+        &copy; <span id="year"></span> CyberFriday
+      </p>
+
+      <div class="footer-links">
+        <a href="../../tools.html">Tools</a>
+        <a href="https://github.com/jernejpetek/cyberfriday"
+           target="_blank"
+           rel="noopener noreferrer">
+          GitHub
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="../../assets/app.js" defer></script>
+  <script src="../../assets/analytics.js" defer></script>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
